@@ -1,0 +1,230 @@
+:root {
+  --bg: #f6efe6;
+  --paper: #fffdfa;
+  --paper-soft: #fff7ef;
+  --ink: #1f1d1b;
+  --muted: #6a6258;
+  --line: rgba(60, 42, 20, 0.12);
+  --accent: #b4572d;
+  --accent-deep: #7a321a;
+  --shadow: 0 24px 55px rgba(70, 44, 19, 0.1);
+  --radius-lg: 28px;
+  --radius-md: 20px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at top left, rgba(212, 144, 98, 0.3), transparent 24%),
+    linear-gradient(180deg, #faf3e9 0%, #efe2d0 100%);
+  color: var(--ink);
+  font-family: "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  line-height: 1.75;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.viewer-shell {
+  width: min(1180px, calc(100% - 24px));
+  margin: 24px auto 40px;
+}
+
+.viewer-hero,
+.sidebar-card,
+.viewer-article {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 253, 249, 0.88);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(16px);
+}
+
+.viewer-hero {
+  padding: 28px;
+  margin-bottom: 22px;
+}
+
+.viewer-back,
+.viewer-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 16px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.viewer-back {
+  margin-bottom: 22px;
+  border: 1px solid var(--line);
+  color: var(--muted);
+}
+
+.viewer-kicker,
+.sidebar-label {
+  margin: 0 0 10px;
+  color: var(--accent-deep);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.viewer-meta h1 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", "Source Han Serif SC", serif;
+  font-size: clamp(2.3rem, 5vw, 4.4rem);
+  line-height: 1.08;
+}
+
+.viewer-path {
+  margin: 14px 0 0;
+  color: var(--muted);
+  word-break: break-all;
+}
+
+.viewer-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.viewer-button {
+  border: 1px solid rgba(180, 87, 45, 0.18);
+  background: rgba(180, 87, 45, 0.1);
+  color: var(--accent-deep);
+}
+
+.viewer-button.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff8f0;
+}
+
+.viewer-button.secondary {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.viewer-layout {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 22px;
+  align-items: start;
+}
+
+.sidebar-card {
+  padding: 22px;
+}
+
+.sidebar-card ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+}
+
+.viewer-article {
+  padding: 34px;
+}
+
+.loading,
+.error-message {
+  color: var(--muted);
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
+  margin-top: 1.7em;
+  margin-bottom: 0.6em;
+  font-family: Georgia, "Times New Roman", "Source Han Serif SC", serif;
+  line-height: 1.2;
+}
+
+.prose h1 {
+  font-size: 2.1rem;
+}
+
+.prose h2 {
+  padding-bottom: 0.35em;
+  border-bottom: 1px solid var(--line);
+  font-size: 1.7rem;
+}
+
+.prose h3 {
+  font-size: 1.35rem;
+}
+
+.prose p,
+.prose li,
+.prose blockquote {
+  color: #342f29;
+  font-size: 1.04rem;
+}
+
+.prose ul,
+.prose ol {
+  padding-left: 1.5rem;
+}
+
+.prose blockquote {
+  margin: 1.3rem 0;
+  padding: 0.9rem 1rem;
+  border-left: 4px solid var(--accent);
+  border-radius: 14px;
+  background: var(--paper-soft);
+}
+
+.prose pre {
+  overflow-x: auto;
+  padding: 16px;
+  border-radius: 18px;
+  background: #221e1a;
+  color: #fff5e8;
+}
+
+.prose code {
+  padding: 0.14em 0.42em;
+  border-radius: 8px;
+  background: rgba(180, 87, 45, 0.1);
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 0.95em;
+}
+
+.prose pre code {
+  padding: 0;
+  background: transparent;
+}
+
+.prose a {
+  color: var(--accent-deep);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+.prose hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 1.8rem 0;
+}
+
+@media (max-width: 900px) {
+  .viewer-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .viewer-article,
+  .viewer-hero,
+  .sidebar-card {
+    padding: 22px;
+  }
+}

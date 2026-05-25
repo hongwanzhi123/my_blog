@@ -371,10 +371,21 @@ a {
   transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
+.card-links a[download] {
+  background: rgba(31, 29, 26, 0.92);
+  border-color: rgba(31, 29, 26, 0.92);
+  color: #fff8ef;
+}
+
 .card-links a:hover,
 .card-links a:focus-visible {
   transform: translateY(-2px);
   background: rgba(182, 84, 45, 0.08);
+}
+
+.card-links a[download]:hover,
+.card-links a[download]:focus-visible {
+  background: #000;
 }
 
 .timeline {
