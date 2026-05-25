@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>个人博客 | 算法与计算机视觉</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <nav class="topbar">
+        <div class="brand">
+          <span class="brand-mark">A / CV</span>
+          <span class="brand-text">个人博客</span>
+        </div>
+        <div class="topbar-links">
+          <a href="#algorithm">算法设计</a>
+          <a href="#vision">计算机视觉</a>
+          <a href="#project">项目总结</a>
+        </div>
+      </nav>
+
+      <div class="hero-grid">
+        <section class="hero-copy">
+          <p class="eyebrow">Algorithm Design / Computer Vision / Projects</p>
+          <h1>把算法学习、视觉模型和项目经验整理成一个可展示的个人知识页面</h1>
+          <p class="hero-text">
+            这个页面用于展示我的算法设计方法总结、计算机视觉算法总结，以及项目实践沉淀。
+            后续我会把部分 Markdown 文档整理成 PDF，并逐步扩展成更完整的个人作品集。
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#sections">开始浏览</a>
+            <a class="button button-secondary" href="./assets/个人博客/index.md">查看博客说明</a>
+          </div>
+        </section>
+
+        <aside class="hero-panel">
+          <div class="panel-card">
+            <p class="panel-label">内容结构</p>
+            <ul class="stat-list">
+              <li><strong>3</strong><span>大主题</span></li>
+              <li><strong>15</strong><span>细分模块</span></li>
+              <li><strong>20+</strong><span>现有笔记入口</span></li>
+            </ul>
+          </div>
+          <div class="panel-card panel-card-accent">
+            <p class="panel-label">当前重点</p>
+            <p class="panel-text">围绕算法方法论、计算机视觉模型体系，以及下水道异常检测项目做系统展示。</p>
+          </div>
+        </aside>
+      </div>
+    </header>
+
+    <main id="sections">
+      <section class="overview">
+        <div class="section-heading">
+          <p class="section-kicker">Overview</p>
+          <h2>三大板块</h2>
+        </div>
+        <div class="overview-grid">
+          <a class="overview-card" href="#algorithm">
+            <span class="overview-index">01</span>
+            <h3>算法设计方法总结</h3>
+            <p>聚焦题型归纳、状态设计、搜索策略与数据结构基础。</p>
+          </a>
+          <a class="overview-card" href="#vision">
+            <span class="overview-index">02</span>
+            <h3>计算机视觉算法总结</h3>
+            <p>覆盖基础网络、骨干模型、目标检测、图像分割与部署。</p>
+          </a>
+          <a class="overview-card" href="#project">
+            <span class="overview-index">03</span>
+            <h3>项目总结</h3>
+            <p>整理真实项目、竞赛练习与训练到部署的完整流程。</p>
+          </a>
+        </div>
+      </section>
+
+      <section id="algorithm" class="content-section">
+        <div class="section-heading">
+          <p class="section-kicker">Section 01</p>
+          <h2>算法设计方法总结</h2>
+          <p>强调方法抽象与题型迁移，把零散题解逐步沉淀成体系化能力。</p>
+        </div>
+        <div class="card-grid">
+          <article class="content-card">
+            <span class="tag">核心模块</span>
+            <h3>动态规划</h3>
+            <p>整理状态定义、转移方程、初始化、空间优化和典型题型。</p>
+            <div class="card-links">
+              <a href="./动态规划.md">Markdown</a>
+              <a href="./动态规划.pdf">PDF</a>
+            </div>
+          </article>
+          <article class="content-card">
+            <span class="tag">搜索策略</span>
+            <h3>搜索与回溯</h3>
+            <p>覆盖 DFS、BFS、组合枚举、剪枝技巧和状态空间搜索。</p>
+            <div class="card-links">
+              <a href="./回溯.md">回溯</a>
+              <a href="./图论（搜索）.md">图搜索</a>
+            </div>
+          </article>
+          <article class="content-card">
+            <span class="tag">基础思维</span>
+            <h3>分治与枚举</h3>
+            <p>从直接做法到优化策略，提炼递归拆分与分类讨论思路。</p>
+            <div class="card-links">
+              <a href="./分治.md">分治</a>
+              <a href="./枚举.md">枚举</a>
+            </div>
+          </article>
+          <article class="content-card">
+            <span class="tag">结构专题</span>
+            <h3>图论与树结构</h3>
+            <p>围绕二叉树、层序遍历、路径问题和图建模能力展开。</p>
+            <div class="card-links">
+              <a href="./二叉树.md">二叉树</a>
+              <a href="./图论（搜索）.md">图论搜索</a>
+            </div>
+          </article>
+          <article class="content-card">
+            <span class="tag">入门基础</span>
+            <h3>基础数据结构</h3>
+            <p>以链表为起点，逐步扩展到栈、队列、哈希与堆的常见场景。</p>
+            <div class="card-links">
+              <a href="./链表.md">Markdown</a>
+              <a href="./链表.pdf">PDF</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="vision" class="content-section">
+        <div class="section-heading">
+          <p class="section-kicker">Section 02</p>
+          <h2>计算机视觉算法总结</h2>
+          <p>从深度学习基础到工程部署，构建完整的计算机视觉知识地图。</p>
+        </div>
+        <div class="card-grid">
+          <article class="content-card">
+            <span class="tag">基础能力</span>
+            <h3>深度学习基础</h3>
+            <p>包括卷积神经网络、Transformer、OpenCV 以及分类和分割训练实践。</p>
+            <div class="card-links">
+              <a href="./assets/下水道异常检测笔记/计算机视觉/深度学习基础/卷积神经网络.md">CNN</a>
+              <a href="./assets/下水道异常检测笔记/计算机视觉/深度学习基础/Transformer.md">Transformer</a>
+            </div>
+          </article>
+          <article class="content-card">
+            <span class="tag">主干模型</span>
+            <h3>骨干网络</h3>
+            <p>对比 ResNet、ConvNeXt、ViT 与 Swin Transformer 的建模特点。</p>
+            <div class="card-links">
+              <a href="./assets/下水道异常检测笔记/计算机视觉/骨干网络/ResNet.md">ResNet</a>
+              <a href="./assets/下水道异常检测笔记/计算机视觉/骨干网络/SwinTransformer.md">Swin</a>
+            </div>
+          </article>
+          <article class="content-card">
+            <span class="tag">主流任务</span>
+            <h3>目标检测</h3>
+            <p>整理 Faster R-CNN、DETR、RT-DETR 与 YOLO 的方法脉络与应用差异。</p>
+            <div class="card-links">
+              <a href="./assets/下水道异常检测笔记/计算机视觉/目标检测/FasterR-CNN.md">Faster R-CNN</a>
+              <a href="./assets/下水道异常检测笔记/计算机视觉/目标检测/Yolo.md">YOLO</a>
+            </div>
+          </article>
+          <article class="content-card">
+            <span class="tag">精细理解</span>
+            <h3>图像分割</h3>
+            <p>覆盖 U-Net、DeepLab、Mask2Former、SAM 等分割模型与任务划分。</p>
+            <div class="card-links">
+              <a href="./assets/下水道异常检测笔记/计算机视觉/图像分割/UNet.md">U-Net</a>
+              <a href="./assets/下水道异常检测笔记/计算机视觉/图像分割/SAM.md">SAM</a>
+            </div>
+          </article>
+          <article class="content-card">
+            <span class="tag">前沿与落地</span>
+            <h3>前沿模型与部署</h3>
+            <p>聚焦 CLIP、知识蒸馏和 ONNX Runtime，连接研究方法与部署实践。</p>
+            <div class="card-links">
+              <a href="./assets/下水道异常检测笔记/计算机视觉/前沿模型/Clip.md">CLIP</a>
+              <a href="./assets/下水道异常检测笔记/计算机视觉/前沿模型/模型蒸馏.md">模型蒸馏</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="project" class="content-section">
+        <div class="section-heading">
+          <p class="section-kicker">Section 03</p>
+          <h2>项目总结</h2>
+          <p>强调从业务问题抽象、模型选择、训练评估到部署优化的完整闭环。</p>
+        </div>
+        <div class="card-grid">
+          <article class="content-card">
+            <span class="tag">核心案例</span>
+            <h3>下水道异常检测</h3>
+            <p>围绕缺陷检测场景，沉淀任务定义、模型选择和工程部署思路。</p>
+            <div class="card-links">
+              <a href="./assets/下水道异常检测笔记/下水道异常检测.md">项目笔记</a>
+            </div>
+          </article>
+          <article class="content-card">
+            <span class="tag">竞赛实践</span>
+            <h3>Kaggle 练习项目</h3>
+            <p>通过手写数字识别和泰坦尼克号项目巩固建模流程与结果分析能力。</p>
+            <div class="card-links">
+              <a href="./assets/下水道异常检测笔记/计算机视觉/Kaggle/手写数字识别.md">手写数字</a>
+              <a href="./assets/下水道异常检测笔记/计算机视觉/Kaggle/泰坦尼克号.md">泰坦尼克号</a>
+            </div>
+          </article>
+          <article class="content-card">
+            <span class="tag">工程流程</span>
+            <h3>训练流程与实验管理</h3>
+            <p>整理数据划分、增强、损失设计、指标记录和实验对比的方法。</p>
+            <div class="card-links">
+              <a href="./assets/个人博客/项目总结.md">查看规划</a>
+            </div>
+          </article>
+          <article class="content-card">
+            <span class="tag">部署能力</span>
+            <h3>模型部署与推理优化</h3>
+            <p>把 PyTorch 模型导出到 ONNX，并关注延迟、体积与精度平衡。</p>
+            <div class="card-links">
+              <a href="./assets/下水道异常检测笔记/计算机视觉/模型部署/ONNX _ONNX Runtime.md">ONNX Runtime</a>
+            </div>
+          </article>
+          <article class="content-card">
+            <span class="tag">经验沉淀</span>
+            <h3>项目复盘与方法迁移</h3>
+            <p>总结项目中的踩坑经验、迁移思路以及后续可优化方向。</p>
+            <div class="card-links">
+              <a href="./assets/个人博客/项目总结.md">复盘框架</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="timeline-section">
+        <div class="section-heading">
+          <p class="section-kicker">Roadmap</p>
+          <h2>后续更新计划</h2>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <span class="timeline-dot"></span>
+            <div>
+              <h3>补全 PDF 展示版本</h3>
+              <p>把算法、视觉和项目笔记分批转成更适合展示和投递的 PDF。</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-dot"></span>
+            <div>
+              <h3>补充实验结果与图表</h3>
+              <p>为项目模块增加结果对比、模型指标与训练过程截图。</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-dot"></span>
+            <div>
+              <h3>升级为作品集站点</h3>
+              <p>在现有静态页面基础上继续扩展为完整的前端作品集网站。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
