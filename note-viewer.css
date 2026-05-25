@@ -1,13 +1,13 @@
 :root {
-  --bg: #f6efe6;
+  --bg: #f4f7fb;
   --paper: #fffdfa;
-  --paper-soft: #fff7ef;
-  --ink: #1f1d1b;
-  --muted: #6a6258;
-  --line: rgba(60, 42, 20, 0.12);
-  --accent: #b4572d;
-  --accent-deep: #7a321a;
-  --shadow: 0 24px 55px rgba(70, 44, 19, 0.1);
+  --paper-soft: #f1f8f7;
+  --ink: #111827;
+  --muted: #5b6472;
+  --line: rgba(15, 23, 42, 0.12);
+  --accent: #0f766e;
+  --accent-deep: #134e4a;
+  --shadow: 0 24px 55px rgba(15, 23, 42, 0.08);
   --radius-lg: 28px;
   --radius-md: 20px;
 }
@@ -19,8 +19,9 @@
 body {
   margin: 0;
   background:
-    radial-gradient(circle at top left, rgba(212, 144, 98, 0.3), transparent 24%),
-    linear-gradient(180deg, #faf3e9 0%, #efe2d0 100%);
+    linear-gradient(120deg, rgba(15, 118, 110, 0.12), transparent 32%),
+    linear-gradient(240deg, rgba(37, 99, 235, 0.1), transparent 36%),
+    linear-gradient(180deg, #f8fbff 0%, #eef3f8 100%);
   color: var(--ink);
   font-family: "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
   line-height: 1.75;
@@ -114,10 +115,7 @@ a {
 }
 
 .viewer-layout {
-  display: grid;
-  grid-template-columns: 280px minmax(0, 1fr);
-  gap: 22px;
-  align-items: start;
+  display: block;
 }
 
 .sidebar-card {
@@ -132,6 +130,8 @@ a {
 
 .viewer-article {
   padding: 34px;
+  max-width: 860px;
+  margin: 0 auto;
 }
 
 .loading,

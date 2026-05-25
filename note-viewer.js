@@ -133,21 +133,15 @@ async function main() {
   const pdf = params.get("pdf");
 
   const titleNode = document.getElementById("note-title");
-  const pathNode = document.getElementById("note-path");
   const contentNode = document.getElementById("note-content");
-  const rawLink = document.getElementById("raw-link");
   const actionsNode = document.getElementById("viewer-actions");
 
   titleNode.textContent = title;
 
   if (!file) {
-    pathNode.textContent = "未提供文件路径";
-    contentNode.innerHTML = '<p class="error-message">缺少要加载的 Markdown 文件路径。</p>';
+    contentNode.innerHTML = '<p class="error-message">内容暂时无法加载。</p>';
     return;
   }
-
-  pathNode.textContent = file;
-  rawLink.href = file;
 
   if (pdf) {
     const pdfLink = document.createElement("a");
@@ -168,7 +162,7 @@ async function main() {
     contentNode.innerHTML = renderMarkdown(markdown);
   } catch (error) {
     contentNode.innerHTML =
-      '<p class="error-message">笔记加载失败。若你是直接双击本地 HTML 打开的，浏览器可能会拦截本地文件读取。部署到 GitHub Pages 后会正常显示。</p>';
+      '<p class="error-message">内容暂时无法加载。</p>';
   }
 }
 

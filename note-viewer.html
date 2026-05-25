@@ -3,38 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>文章阅读页</title>
+  <title>文章阅读</title>
   <link rel="stylesheet" href="./note-viewer.css">
 </head>
 <body>
   <div class="viewer-shell">
     <header class="viewer-hero">
-      <a class="viewer-back" href="./index.html">返回博客首页</a>
+      <a class="viewer-back" href="./index.html">返回首页</a>
       <div class="viewer-meta">
-        <p class="viewer-kicker">Markdown Article</p>
-        <h1 id="note-title">正在加载笔记...</h1>
-        <p id="note-path" class="viewer-path"></p>
+        <p class="viewer-kicker">Article</p>
+        <h1 id="note-title">文章阅读</h1>
       </div>
-      <div class="viewer-actions" id="viewer-actions">
-        <a class="viewer-button secondary" id="raw-link" href="#" target="_blank" rel="noopener">查看原始 Markdown</a>
-      </div>
+      <div class="viewer-actions" id="viewer-actions"></div>
     </header>
 
     <main class="viewer-layout">
-      <aside class="viewer-sidebar">
-        <div class="sidebar-card">
-          <p class="sidebar-label">阅读建议</p>
-          <ul>
-            <li>优先阅读整理后的页面内容。</li>
-            <li>如果需要归档或投递，可以直接下载 PDF。</li>
-            <li>原始 Markdown 链接保留，方便继续编辑和核对。</li>
-          </ul>
-        </div>
-      </aside>
-
       <article class="viewer-article">
         <div id="note-content" class="prose">
-          <p class="loading">正在读取笔记内容，请稍候。</p>
+          <p class="loading">正在加载内容。</p>
         </div>
       </article>
     </main>

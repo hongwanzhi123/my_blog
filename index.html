@@ -17,36 +17,31 @@
         <div class="topbar-links">
           <a href="#algorithm">算法设计</a>
           <a href="#vision">计算机视觉</a>
-          <a href="#project">项目总结</a>
+          <a href="#project">项目实践</a>
         </div>
       </nav>
 
       <div class="hero-grid">
         <section class="hero-copy">
-          <p class="eyebrow">Algorithm Design / Computer Vision / Projects</p>
-          <h1>把算法学习、视觉模型和项目经验整理成一个可展示的个人知识页面</h1>
+          <p class="eyebrow">Algorithm Design / Computer Vision / Engineering Practice</p>
+          <h1>算法与计算机视觉学习作品集</h1>
           <p class="hero-text">
-            这个页面用于展示我的算法设计方法总结、计算机视觉算法总结，以及项目实践沉淀。
-            笔记入口现在会优先进入统一的阅读页，并为已有 PDF 提供直接下载按钮。
+            系统整理算法设计方法、计算机视觉模型体系，以及视觉项目实践经验。
           </p>
           <div class="hero-actions">
-            <a class="button button-primary" href="#sections">开始浏览</a>
-            <a class="button button-secondary" href="./note-viewer.html?file=assets/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/index.md&title=%E5%8D%9A%E5%AE%A2%E8%AF%B4%E6%98%8E">阅读博客说明</a>
+            <a class="button button-primary" href="#vision">查看视觉笔记</a>
+            <a class="button button-secondary" href="#project">查看项目实践</a>
           </div>
         </section>
 
         <aside class="hero-panel">
           <div class="panel-card">
-            <p class="panel-label">内容结构</p>
+            <p class="panel-label">Portfolio</p>
             <ul class="stat-list">
-              <li><strong>3</strong><span>大主题</span></li>
-              <li><strong>15</strong><span>细分模块</span></li>
-              <li><strong>20+</strong><span>现有笔记入口</span></li>
+              <li><strong>3</strong><span>内容方向</span></li>
+              <li><strong>32</strong><span>笔记入口</span></li>
+              <li><strong>2</strong><span>PDF 资料</span></li>
             </ul>
-          </div>
-          <div class="panel-card panel-card-accent">
-            <p class="panel-label">展示方式</p>
-            <p class="panel-text">在线阅读走统一文章页，PDF 资料保留下载按钮，整体更适合面试官直接浏览。</p>
           </div>
         </aside>
       </div>
@@ -56,23 +51,23 @@
       <section class="overview">
         <div class="section-heading">
           <p class="section-kicker">Overview</p>
-          <h2>三大板块</h2>
+          <h2>内容导航</h2>
         </div>
         <div class="overview-grid">
           <a class="overview-card" href="#algorithm">
             <span class="overview-index">01</span>
-            <h3>算法设计方法总结</h3>
-            <p>聚焦题型归纳、状态设计、搜索策略与数据结构基础。</p>
+            <h3>算法设计</h3>
+            <p>动态规划、搜索回溯、分治枚举、图论树结构、基础数据结构。</p>
           </a>
           <a class="overview-card" href="#vision">
             <span class="overview-index">02</span>
-            <h3>计算机视觉算法总结</h3>
-            <p>覆盖基础网络、骨干模型、目标检测、图像分割与部署。</p>
+            <h3>计算机视觉</h3>
+            <p>深度学习基础、骨干网络、目标检测、图像分割、部署与前沿模型。</p>
           </a>
           <a class="overview-card" href="#project">
             <span class="overview-index">03</span>
-            <h3>项目总结</h3>
-            <p>整理真实项目、竞赛练习与训练到部署的完整流程。</p>
+            <h3>项目实践</h3>
+            <p>下水道异常检测、Kaggle 练习、模型训练与部署复盘。</p>
           </a>
         </div>
       </section>
@@ -81,52 +76,64 @@
         <div class="section-heading">
           <p class="section-kicker">Section 01</p>
           <h2>算法设计方法总结</h2>
-          <p>强调方法抽象与题型迁移，把零散题解逐步沉淀成体系化能力。</p>
         </div>
         <div class="card-grid">
           <article class="content-card">
-            <span class="tag">核心模块</span>
+            <span class="tag">动态规划</span>
             <h3>动态规划</h3>
-            <p>整理状态定义、转移方程、初始化、空间优化和典型题型。</p>
+            <p>状态定义、转移方程、初始化、空间优化与高频题型。</p>
             <div class="card-links">
-              <a href="./note-viewer.html?file=%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92.md&title=%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92&pdf=%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92.pdf">在线阅读</a>
-              <a href="./动态规划.pdf" download>下载 PDF</a>
+              <a href="./note-viewer.html?file=%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92.md&title=%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92&pdf=%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92.pdf">阅读</a>
+              <a href="./动态规划.pdf" download>PDF</a>
             </div>
           </article>
           <article class="content-card">
-            <span class="tag">搜索策略</span>
-            <h3>搜索与回溯</h3>
-            <p>覆盖 DFS、BFS、组合枚举、剪枝技巧和状态空间搜索。</p>
+            <span class="tag">数据结构</span>
+            <h3>链表</h3>
+            <p>链表结构、指针操作、常见题型与边界处理。</p>
             <div class="card-links">
-              <a href="./note-viewer.html?file=%E5%9B%9E%E6%BA%AF.md&title=%E5%9B%9E%E6%BA%AF">阅读回溯</a>
-              <a href="./note-viewer.html?file=%E5%9B%BE%E8%AE%BA%EF%BC%88%E6%90%9C%E7%B4%A2%EF%BC%89.md&title=%E5%9B%BE%E8%AE%BA%E6%90%9C%E7%B4%A2">阅读图搜索</a>
+              <a href="./note-viewer.html?file=%E9%93%BE%E8%A1%A8.md&title=%E9%93%BE%E8%A1%A8&pdf=%E9%93%BE%E8%A1%A8.pdf">阅读</a>
+              <a href="./链表.pdf" download>PDF</a>
             </div>
           </article>
           <article class="content-card">
-            <span class="tag">基础思维</span>
-            <h3>分治与枚举</h3>
-            <p>从直接做法到优化策略，提炼递归拆分与分类讨论思路。</p>
+            <span class="tag">搜索</span>
+            <h3>回溯</h3>
+            <p>组合枚举、排列搜索、剪枝策略与搜索树建模。</p>
             <div class="card-links">
-              <a href="./note-viewer.html?file=%E5%88%86%E6%B2%BB.md&title=%E5%88%86%E6%B2%BB">阅读分治</a>
-              <a href="./note-viewer.html?file=%E6%9E%9A%E4%B8%BE.md&title=%E6%9E%9A%E4%B8%BE">阅读枚举</a>
+              <a href="./note-viewer.html?file=%E5%9B%9E%E6%BA%AF.md&title=%E5%9B%9E%E6%BA%AF">阅读</a>
             </div>
           </article>
           <article class="content-card">
-            <span class="tag">结构专题</span>
-            <h3>图论与树结构</h3>
-            <p>围绕二叉树、层序遍历、路径问题和图建模能力展开。</p>
+            <span class="tag">图搜索</span>
+            <h3>图论（搜索）</h3>
+            <p>DFS、BFS、连通性、路径问题与图建模。</p>
             <div class="card-links">
-              <a href="./note-viewer.html?file=%E4%BA%8C%E5%8F%89%E6%A0%91.md&title=%E4%BA%8C%E5%8F%89%E6%A0%91">阅读二叉树</a>
-              <a href="./note-viewer.html?file=%E5%9B%BE%E8%AE%BA%EF%BC%88%E6%90%9C%E7%B4%A2%EF%BC%89.md&title=%E5%9B%BE%E8%AE%BA%E6%90%9C%E7%B4%A2">阅读图论</a>
+              <a href="./note-viewer.html?file=%E5%9B%BE%E8%AE%BA%EF%BC%88%E6%90%9C%E7%B4%A2%EF%BC%89.md&title=%E5%9B%BE%E8%AE%BA%EF%BC%88%E6%90%9C%E7%B4%A2%EF%BC%89">阅读</a>
             </div>
           </article>
           <article class="content-card">
-            <span class="tag">入门基础</span>
-            <h3>基础数据结构</h3>
-            <p>以链表为起点，逐步扩展到栈、队列、哈希与堆的常见场景。</p>
+            <span class="tag">分治</span>
+            <h3>分治</h3>
+            <p>递归拆分、子问题合并与复杂度分析。</p>
             <div class="card-links">
-              <a href="./note-viewer.html?file=%E9%93%BE%E8%A1%A8.md&title=%E9%93%BE%E8%A1%A8&pdf=%E9%93%BE%E8%A1%A8.pdf">在线阅读</a>
-              <a href="./链表.pdf" download>下载 PDF</a>
+              <a href="./note-viewer.html?file=%E5%88%86%E6%B2%BB.md&title=%E5%88%86%E6%B2%BB">阅读</a>
+            </div>
+          </article>
+          <article class="content-card">
+            <span class="tag">枚举</span>
+            <h3>枚举</h3>
+            <p>暴力枚举、状态压缩、剪枝和分类讨论。</p>
+            <div class="card-links">
+              <a href="./note-viewer.html?file=%E6%9E%9A%E4%B8%BE.md&title=%E6%9E%9A%E4%B8%BE">阅读</a>
+            </div>
+          </article>
+          <article class="content-card">
+            <span class="tag">树结构</span>
+            <h3>二叉树</h3>
+            <p>树遍历、递归结构、路径问题和层序处理。</p>
+            <div class="card-links">
+              <a href="./note-viewer.html?file=%E4%BA%8C%E5%8F%89%E6%A0%91.md&title=%E4%BA%8C%E5%8F%89%E6%A0%91">阅读</a>
             </div>
           </article>
         </div>
@@ -136,104 +143,109 @@
         <div class="section-heading">
           <p class="section-kicker">Section 02</p>
           <h2>计算机视觉算法总结</h2>
-          <p>从深度学习基础到工程部署，构建完整的计算机视觉知识地图。</p>
         </div>
-        <div class="card-grid">
-          <article class="content-card">
-            <span class="tag">基础能力</span>
-            <h3>深度学习基础</h3>
-            <p>包括卷积神经网络、Transformer、OpenCV 以及分类和分割训练实践。</p>
-            <div class="card-links">
-              <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C.md&title=CNN">阅读 CNN</a>
-              <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/Transformer.md&title=Transformer">阅读 Transformer</a>
-            </div>
-          </article>
-          <article class="content-card">
-            <span class="tag">主干模型</span>
-            <h3>骨干网络</h3>
-            <p>对比 ResNet、ConvNeXt、ViT 与 Swin Transformer 的建模特点。</p>
-            <div class="card-links">
-              <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E9%AA%A8%E5%B9%B2%E7%BD%91%E7%BB%9C/ResNet.md&title=ResNet">阅读 ResNet</a>
-              <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E9%AA%A8%E5%B9%B2%E7%BD%91%E7%BB%9C/SwinTransformer.md&title=Swin%20Transformer">阅读 Swin</a>
-            </div>
-          </article>
-          <article class="content-card">
-            <span class="tag">主流任务</span>
-            <h3>目标检测</h3>
-            <p>整理 Faster R-CNN、DETR、RT-DETR 与 YOLO 的方法脉络与应用差异。</p>
-            <div class="card-links">
-              <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/FasterR-CNN.md&title=Faster%20R-CNN">阅读 Faster R-CNN</a>
-              <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/Yolo.md&title=YOLO">阅读 YOLO</a>
-            </div>
-          </article>
-          <article class="content-card">
-            <span class="tag">精细理解</span>
-            <h3>图像分割</h3>
-            <p>覆盖 U-Net、DeepLab、Mask2Former、SAM 等分割模型与任务划分。</p>
-            <div class="card-links">
-              <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2/UNet.md&title=U-Net">阅读 U-Net</a>
-              <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2/SAM.md&title=SAM">阅读 SAM</a>
-            </div>
-          </article>
-          <article class="content-card">
-            <span class="tag">前沿与落地</span>
-            <h3>前沿模型与部署</h3>
-            <p>聚焦 CLIP、知识蒸馏和 ONNX Runtime，连接研究方法与部署实践。</p>
-            <div class="card-links">
-              <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E5%89%8D%E6%B2%BF%E6%A8%A1%E5%9E%8B/Clip.md&title=CLIP">阅读 CLIP</a>
-              <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E5%89%8D%E6%B2%BF%E6%A8%A1%E5%9E%8B/%E6%A8%A1%E5%9E%8B%E8%92%B8%E9%A6%8F.md&title=%E6%A8%A1%E5%9E%8B%E8%92%B8%E9%A6%8F">阅读模型蒸馏</a>
-            </div>
-          </article>
+
+        <div class="module-block">
+          <h3 class="module-title">深度学习基础</h3>
+          <div class="card-grid compact-grid">
+            <article class="content-card">
+              <span class="tag">CNN</span>
+              <h3>卷积神经网络</h3>
+              <p>卷积、池化、特征提取与经典 CNN 结构。</p>
+              <div class="card-links"><a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C.md&title=%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C">阅读</a></div>
+            </article>
+            <article class="content-card">
+              <span class="tag">Transformer</span>
+              <h3>Transformer</h3>
+              <p>注意力机制、编码器结构与视觉 Transformer 基础。</p>
+              <div class="card-links"><a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/Transformer.md&title=Transformer">阅读</a></div>
+            </article>
+            <article class="content-card">
+              <span class="tag">OpenCV</span>
+              <h3>OpenCV</h3>
+              <p>图像读取、变换、预处理与传统视觉操作。</p>
+              <div class="card-links"><a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/OpenCV.md&title=OpenCV">阅读</a></div>
+            </article>
+            <article class="content-card">
+              <span class="tag">分类训练</span>
+              <h3>图像分类训练</h3>
+              <p>基于经典网络构建图像分类训练流程。</p>
+              <div class="card-links"><a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/%E5%9F%BA%E4%BA%8E%E7%BB%8F%E5%85%B8%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B%E8%BF%9B%E8%A1%8C%E6%9E%84%E5%BB%BA%E8%AE%AD%E7%BB%83%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B.md&title=%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB%E8%AE%AD%E7%BB%83">阅读</a></div>
+            </article>
+            <article class="content-card">
+              <span class="tag">分割训练</span>
+              <h3>图像分割训练</h3>
+              <p>基于经典网络构建图像分割训练流程。</p>
+              <div class="card-links"><a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/%E5%9F%BA%E4%BA%8E%E7%BB%8F%E5%85%B8%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B%E8%BF%9B%E8%A1%8C%E6%9E%84%E5%BB%BA%E8%AE%AD%E7%BB%83%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E6%A8%A1%E5%9E%8B.md&title=%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E8%AE%AD%E7%BB%83">阅读</a></div>
+            </article>
+          </div>
+        </div>
+
+        <div class="module-block">
+          <h3 class="module-title">骨干网络</h3>
+          <div class="card-grid compact-grid">
+            <article class="content-card"><span class="tag">CNN</span><h3>ResNet</h3><p>残差连接、网络退化问题与经典 backbone。</p><div class="card-links"><a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E9%AA%A8%E5%B9%B2%E7%BD%91%E7%BB%9C/ResNet.md&title=ResNet">阅读</a></div></article>
+            <article class="content-card"><span class="tag">CNN</span><h3>ConvNeXt</h3><p>现代化 CNN 设计与 Transformer 时代的卷积网络。</p><div class="card-links"><a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E9%AA%A8%E5%B9%B2%E7%BD%91%E7%BB%9C/ConvNeXt.md&title=ConvNeXt">阅读</a></div></article>
+            <article class="content-card"><span class="tag">ViT</span><h3>VIT</h3><p>视觉 Transformer、patch embedding 与全局建模。</p><div class="card-links"><a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E9%AA%A8%E5%B9%B2%E7%BD%91%E7%BB%9C/VIT.md&title=VIT">阅读</a></div></article>
+            <article class="content-card"><span class="tag">ViT</span><h3>Swin Transformer</h3><p>窗口注意力、层级特征和通用视觉主干。</p><div class="card-links"><a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E9%AA%A8%E5%B9%B2%E7%BD%91%E7%BB%9C/SwinTransformer.md&title=Swin%20Transformer">阅读</a></div></article>
+          </div>
+        </div>
+
+        <div class="module-block">
+          <h3 class="module-title">目标检测</h3>
+          <div class="card-grid compact-grid">
+            <article class="content-card"><span class="tag">Two-stage</span><h3>Faster R-CNN</h3><p>候选区域、RPN、RoI Pooling 与两阶段检测。</p><div class="card-links"><a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/FasterR-CNN.md&title=Faster%20R-CNN">阅读</a></div></article>
+            <article class="content-card"><span class="tag">Transformer</span><h3>DETR</h3><p>集合预测、object query 与端到端目标检测。</p><div class="card-links"><a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/DETR.md&title=DETR">阅读</a></div></article>
+            <article class="content-card"><span class="tag">Real-time</span><h3>RT-DETR</h3><p>实时 Transformer 检测器与高效端到端检测。</p><div class="card-links"><a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/RT-DETR.md&title=RT-DETR">阅读</a></div></article>
+            <article class="content-card"><span class="tag">One-stage</span><h3>YOLO</h3><p>单阶段检测、实时推理与工程部署常用方案。</p><div class="card-links"><a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/Yolo.md&title=YOLO">阅读</a></div></article>
+          </div>
+        </div>
+
+        <div class="module-block">
+          <h3 class="module-title">图像分割</h3>
+          <div class="card-grid compact-grid">
+            <article class="content-card"><span class="tag">Segmentation</span><h3>U-Net</h3><p>编码器解码器结构、跳跃连接与医学图像分割。</p><div class="card-links"><a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2/UNet.md&title=U-Net">阅读</a></div></article>
+            <article class="content-card"><span class="tag">Segmentation</span><h3>DeepLab</h3><p>空洞卷积、ASPP 与语义分割结构设计。</p><div class="card-links"><a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2/DeepLab.md&title=DeepLab">阅读</a></div></article>
+            <article class="content-card"><span class="tag">Real-time</span><h3>Bisenet</h3><p>实时语义分割、空间路径和上下文路径。</p><div class="card-links"><a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2/Bisenet.md&title=Bisenet">阅读</a></div></article>
+            <article class="content-card"><span class="tag">Instance</span><h3>Mask R-CNN</h3><p>实例分割、检测分支与 mask 分支。</p><div class="card-links"><a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2/MaskR-CNN.md&title=Mask%20R-CNN">阅读</a></div></article>
+            <article class="content-card"><span class="tag">Universal</span><h3>Mask2Former</h3><p>统一分割框架、mask classification 与 Transformer decoder。</p><div class="card-links"><a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2/Mask2Former.md&title=Mask2Former">阅读</a></div></article>
+            <article class="content-card"><span class="tag">Foundation</span><h3>SAM</h3><p>视觉分割基础模型、prompt 与泛化能力。</p><div class="card-links"><a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2/SAM.md&title=SAM">阅读</a></div></article>
+          </div>
+        </div>
+
+        <div class="module-block">
+          <h3 class="module-title">前沿模型与部署</h3>
+          <div class="card-grid compact-grid">
+            <article class="content-card"><span class="tag">Multimodal</span><h3>CLIP</h3><p>图文对齐、对比学习与多模态视觉理解。</p><div class="card-links"><a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E5%89%8D%E6%B2%BF%E6%A8%A1%E5%9E%8B/Clip.md&title=CLIP">阅读</a></div></article>
+            <article class="content-card"><span class="tag">Compression</span><h3>模型蒸馏</h3><p>Teacher-Student 训练、模型压缩与轻量化部署。</p><div class="card-links"><a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E5%89%8D%E6%B2%BF%E6%A8%A1%E5%9E%8B/%E6%A8%A1%E5%9E%8B%E8%92%B8%E9%A6%8F.md&title=%E6%A8%A1%E5%9E%8B%E8%92%B8%E9%A6%8F">阅读</a></div></article>
+            <article class="content-card"><span class="tag">Deployment</span><h3>ONNX Runtime</h3><p>模型导出、推理部署、性能优化与跨平台运行。</p><div class="card-links"><a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/ONNX%20_ONNX%20Runtime.md&title=ONNX%20Runtime">阅读</a></div></article>
+          </div>
         </div>
       </section>
 
       <section id="project" class="content-section">
         <div class="section-heading">
           <p class="section-kicker">Section 03</p>
-          <h2>项目总结</h2>
-          <p>强调从业务问题抽象、模型选择、训练评估到部署优化的完整闭环。</p>
+          <h2>项目实践</h2>
         </div>
         <div class="card-grid">
           <article class="content-card">
-            <span class="tag">核心案例</span>
+            <span class="tag">Project</span>
             <h3>下水道异常检测</h3>
-            <p>围绕缺陷检测场景，沉淀任务定义、模型选择和工程部署思路。</p>
-            <div class="card-links">
-              <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.md&title=%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B">在线阅读</a>
-            </div>
+            <p>工业视觉缺陷检测任务、模型选择、训练评估与部署思路。</p>
+            <div class="card-links"><a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.md&title=%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B">阅读</a></div>
           </article>
           <article class="content-card">
-            <span class="tag">竞赛实践</span>
-            <h3>Kaggle 练习项目</h3>
-            <p>通过手写数字识别和泰坦尼克号项目巩固建模流程与结果分析能力。</p>
-            <div class="card-links">
-              <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/Kaggle/%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB.md&title=%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB">阅读手写数字</a>
-              <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/Kaggle/%E6%B3%B0%E5%9D%A6%E5%B0%BC%E5%85%8B%E5%8F%B7.md&title=%E6%B3%B0%E5%9D%A6%E5%B0%BC%E5%85%8B%E5%8F%B7">阅读泰坦尼克号</a>
-            </div>
+            <span class="tag">Kaggle</span>
+            <h3>手写数字识别</h3>
+            <p>图像分类入门项目、数据处理、模型训练与结果分析。</p>
+            <div class="card-links"><a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/Kaggle/%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB.md&title=%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB">阅读</a></div>
           </article>
           <article class="content-card">
-            <span class="tag">工程流程</span>
-            <h3>训练流程与实验管理</h3>
-            <p>整理数据划分、增强、损失设计、指标记录和实验对比的方法。</p>
-            <div class="card-links">
-              <a href="./note-viewer.html?file=assets/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93.md&title=%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93">阅读规划</a>
-            </div>
-          </article>
-          <article class="content-card">
-            <span class="tag">部署能力</span>
-            <h3>模型部署与推理优化</h3>
-            <p>把 PyTorch 模型导出到 ONNX，并关注延迟、体积与精度平衡。</p>
-            <div class="card-links">
-              <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/ONNX%20_ONNX%20Runtime.md&title=ONNX%20Runtime">阅读部署笔记</a>
-            </div>
-          </article>
-          <article class="content-card">
-            <span class="tag">经验沉淀</span>
-            <h3>项目复盘与方法迁移</h3>
-            <p>总结项目中的踩坑经验、迁移思路以及后续可优化方向。</p>
-            <div class="card-links">
-              <a href="./note-viewer.html?file=assets/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93.md&title=%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%9B%98%E4%B8%8E%E6%96%B9%E6%B3%95%E8%BF%81%E7%A7%BB">阅读复盘</a>
-            </div>
+            <span class="tag">Kaggle</span>
+            <h3>泰坦尼克号</h3>
+            <p>表格建模、特征工程、分类模型与竞赛流程。</p>
+            <div class="card-links"><a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/Kaggle/%E6%B3%B0%E5%9D%A6%E5%B0%BC%E5%85%8B%E5%8F%B7.md&title=%E6%B3%B0%E5%9D%A6%E5%B0%BC%E5%85%8B%E5%8F%B7">阅读</a></div>
           </article>
         </div>
       </section>
