@@ -504,7 +504,7 @@ BiSeNet v1
 BiSeNet v2
 STDC / Rethinking BiSeNet
 
-如果你是面试或项目介绍，重点掌握这三者就已经足够。
+如果是知识总结或项目介绍，重点掌握这三者就已经足够。
 
 ## 二十、BiSeNet 和 DeepLab 的区别
 对比项	BiSeNet	DeepLab
@@ -524,9 +524,9 @@ DeepLab：
 BiSeNet：
     更重视实时速度和空间细节保留
 
-如果你要做实时道路分割，BiSeNet 很合适。
+如果需要做实时道路分割，BiSeNet 很合适。
 
-如果你更关注高精度 benchmark，DeepLabv3+ 可能更强。
+如果更关注高精度 benchmark，DeepLabv3+ 可能更强。
 
 ## 二十一、BiSeNet 和 U-Net 的区别
 对比项	BiSeNet	U-Net
@@ -545,9 +545,9 @@ U-Net：
 BiSeNet：
     直接分出一条细节分支和一条语义分支，再高效融合
 
-如果你的项目是裂缝、病灶、小缺陷，U-Net 往往更直接。
+如果项目是裂缝、病灶、小缺陷，U-Net 往往更直接。
 
-如果你的项目是自动驾驶实时分割、机器人实时视觉，BiSeNet 更有针对性。
+如果项目是自动驾驶实时分割、机器人实时视觉，BiSeNet 更有针对性。
 
 ## 二十二、BiSeNet 和 FCN 的区别
 
@@ -589,7 +589,7 @@ BiSeNet：
 Mask R-CNN：
     分别输出 person_1、person_2、person_3 的 mask
 
-所以如果你要区分每一个独立目标，用 Mask R-CNN；如果只需要每个像素的类别，用 BiSeNet。
+所以如果需要区分每一个独立目标，用 Mask R-CNN；如果只需要每个像素的类别，用 BiSeNet。
 
 ## 二十四、BiSeNet 的训练流程
 
@@ -811,36 +811,32 @@ Student：BiSeNet
 
 这样可以在不明显增加推理成本的情况下提高精度。
 
-## 三十一、面试中如何介绍 BiSeNet？
+## 三十一、BiSeNet 核心总结
 
-如果面试官问：
-
-你了解 BiSeNet 吗？
-
-可以这样回答：
+核心说明：
 
 BiSeNet 是一种面向实时语义分割的双路径网络。它的核心思想是将空间细节信息和语义上下文信息分开建模，再进行融合。BiSeNet v1 中有 Spatial Path 和 Context Path，Spatial Path 使用较浅的卷积结构保留高分辨率空间细节，Context Path 使用快速下采样的轻量 backbone 获取大感受野和高级语义信息。之后通过 Attention Refinement Module 对上下文特征进行细化，再用 Feature Fusion Module 融合空间特征和语义特征，最终输出像素级分割结果。
 
 BiSeNet v2 进一步将这种思想改进为 Detail Branch 和 Semantic Branch，前者用浅层宽通道结构捕获低级细节，后者用窄通道深层结构快速提取语义上下文，并通过 Guided Aggregation Layer 融合两路特征。整体来看，BiSeNet 的优势是速度快、结构清晰，适合自动驾驶、视频场景解析、机器人视觉等实时语义分割任务。
 
-## 三十二、如果面试官追问：BiSeNet 为什么适合实时分割？
+## 三十二、延伸知识：BiSeNet 为什么适合实时分割？
 
-可以回答：
+核心说明：
 
 因为 BiSeNet 没有用一个很重的网络同时承担细节保留和语义理解，而是把任务拆成两个轻量分支。空间或细节分支负责保留高分辨率边界信息，语义或上下文分支通过快速下采样获得大感受野和高级语义，然后用轻量融合模块结合两者。这样既避免了保持高分辨率带来的巨大计算量，也避免了过度下采样导致的边界丢失，所以能在速度和精度之间取得较好平衡。
 
-## 三十三、如果面试官追问：BiSeNet v1 和 v2 有什么区别？
+## 三十三、延伸知识：BiSeNet v1 和 v2 有什么区别？
 
-可以回答：
+核心说明：
 
 BiSeNet v1 使用 Spatial Path 和 Context Path。Spatial Path 通过几层卷积保留空间细节，Context Path 使用轻量 backbone 快速下采样获取语义上下文，并通过 ARM 和 FFM 融合特征。
 
 BiSeNet v2 则进一步重新设计了双边结构，使用 Detail Branch 和 Semantic Branch。Detail Branch 是浅层、宽通道结构，专门捕获低级细节；Semantic Branch 是深层、窄通道结构，通过快速下采样获得语义上下文。两者通过 Guided Aggregation Layer 融合。相比 v1，v2 更强调高效性和速度-精度平衡。
 
-## 三十四、如果面试官追问：BiSeNet 和 DeepLab 怎么选？
+## 三十四、延伸知识：BiSeNet 和 DeepLab 怎么选？
 
-可以回答：
+核心说明：
 
-如果任务更重视实时性，比如自动驾驶视频流、机器人视觉或边缘设备部署，我会优先考虑 BiSeNet，因为它通过双路径结构在速度和分割效果之间做了比较好的权衡。
+如果任务更重视实时性，比如自动驾驶视频流、机器人视觉或边缘设备部署，可以优先考虑 BiSeNet，因为它通过双路径结构在速度和分割效果之间做了比较好的权衡。
 
 如果任务更重视语义分割精度，尤其是自然场景或城市街景分割，且对速度要求没那么极端，可以考虑 DeepLabv3+。DeepLab 的空洞卷积和 ASPP 对多尺度上下文建模更强，而 BiSeNet 更强调实时性和轻量化。

@@ -589,7 +589,7 @@ block 数量
 计算量
 预训练数据规模
 
-如果你做项目，通常可以从：
+如果做项目，通常可以从：
 
 Swin-Tiny
 
@@ -630,7 +630,7 @@ Linear 分类头
 
 num_classes = 1000
 
-如果你做自己的分类任务，比如 5 类病害分类，就把最后分类头改成：
+如果做自身的分类任务，比如 5 类病害分类，就把最后分类头改成：
 
 num_classes = 5
 
@@ -739,7 +739,7 @@ Linear 分类头
 
 num_classes = 1000
 
-如果你做自己的分类任务，比如 5 类病害分类，就把最后分类头改成：
+如果做自身的分类任务，比如 5 类病害分类，就把最后分类头改成：
 
 num_classes = 5
 
@@ -859,7 +859,7 @@ patch merging
 
 Transformer 类模型通常更依赖大规模预训练。
 
-如果你的数据很小，从零训练 Swin 不一定比 ResNet 好。
+如果数据很小，从零训练 Swin 不一定比 ResNet 好。
 
 实际项目中一般用预训练权重。
 
@@ -912,13 +912,9 @@ B = relative position bias
 
 这对图像任务很重要。
 
-## 二十九、Swin Transformer 的面试回答版本
+## 二十九、Swin Transformer 的核心总结
 
-如果面试官问：
-
-你了解 Swin Transformer 吗？
-
-可以这样回答：
+核心说明：
 
 Swin Transformer 是一种层级式视觉 Transformer，它的核心设计是 shifted window attention。原始 ViT 对所有 patch 做全局 self-attention，计算量会随着 token 数平方增长，不太适合高分辨率的检测和分割任务。Swin Transformer 把特征图划分成固定大小窗口，只在窗口内部做 self-attention，从而显著降低计算量。
 
@@ -926,26 +922,26 @@ Swin Transformer 是一种层级式视觉 Transformer，它的核心设计是 sh
 
 另外，Swin Transformer 通过 patch merging 构建类似 CNN 的层级结构，逐步降低空间分辨率、增加通道数，因此可以输出多尺度特征，非常适合作为目标检测、语义分割和实例分割任务的 backbone。
 
-## 三十、如果面试官追问：Swin 为什么比 ViT 更适合检测和分割？
+## 三十、延伸知识：Swin 为什么比 ViT 更适合检测和分割？
 
-可以回答：
+核心说明：
 
 主要有两点。第一，Swin 使用窗口 attention，计算复杂度比全局 attention 更低，更适合高分辨率输入；检测和分割通常需要比分类更高的图像分辨率。第二，Swin 通过 patch merging 构建层级特征，可以输出不同尺度的 feature maps，类似 ResNet 的 C2、C3、C4、C5，这样可以方便地接 FPN、UPerNet、Mask R-CNN 等检测分割头。而原始 ViT 通常是单尺度 token 输出，直接用于检测分割不如 Swin 自然。
 
-## 三十一、如果面试官追问：Shifted Window 有什么作用？
+## 三十一、延伸知识：Shifted Window 有什么作用？
 
-可以回答：
+核心说明：
 
 如果只使用普通 window attention，每个 token 只能和同一窗口内的 token 交互，不同窗口之间信息隔离。Shifted window 通过在相邻 block 中把窗口划分移动半个窗口大小，让原来位于不同窗口的 token 被划分到同一个新窗口中，从而实现跨窗口信息交互。这样既不需要做全局 attention，也能逐层扩大信息交流范围。
 
-## 三十二、如果面试官追问：Patch Merging 是什么？
+## 三十二、延伸知识：Patch Merging 是什么？
 
-可以回答：
+核心说明：
 
 Patch Merging 是 Swin Transformer 中的下采样模块，作用类似 CNN 中的 stride convolution 或 pooling。它会把相邻 2×2 的 token 在通道维度拼接起来，然后通过一个线性层降维。这样空间分辨率减半，通道数增加，形成层级特征。例如输入是 H×W×C，经过 Patch Merging 后变成 H/2×W/2×2C。
 
-## 三十三、如果面试官追问：Swin 和 CNN 有什么相似点？
+## 三十三、延伸知识：Swin 和 CNN 有什么相似点？
 
-可以回答：
+核心说明：
 
 Swin 和 CNN 都有层级结构，都会随着网络加深逐渐降低空间分辨率、增加通道数，并形成多尺度特征。Swin 的窗口 attention 也类似卷积的局部建模，只不过卷积使用固定卷积核，而 Swin 在局部窗口内通过 self-attention 自适应建模 token 之间关系。因此 Swin 可以看作一种更适合视觉任务的层级 Transformer backbone。

@@ -357,7 +357,7 @@ object queries
 ↓
 通过 cross-attention 关注图像特征
 ↓
-每个 query 获取自己关心的目标信息
+每个 query 获取自身关心的目标信息
 ↓
 输出目标表示
 
@@ -388,7 +388,7 @@ query 3 关注左下角的人
 query 17 关注中间的汽车
 query 41 关注右上角的红绿灯
 
-每个 query 会从整张图像特征中提取和自己相关的信息。
+每个 query 会从整张图像特征中提取和相关信息。
 
 最后每个 query 形成一个目标级表示。
 
@@ -725,13 +725,9 @@ O(N²)
 
 这也是为什么后来的 Deformable DETR、RT-DETR 等都在优化 attention 计算。
 
-## 二十六、DETR 的面试回答版本
+## 二十六、DETR 的核心总结
 
-如果面试官问：
-
-你了解 DETR 吗？
-
-可以这样回答：
+核心说明：
 
 DETR 是一种基于 Transformer 的端到端目标检测算法，全称是 Detection Transformer。它最大的特点是把目标检测建模成集合预测问题，而不是传统的候选框筛选问题。传统检测器通常依赖 anchor、proposal、NMS 等人工设计组件，而 DETR 使用 CNN backbone 提取图像特征，然后将特征展平成序列输入 Transformer encoder，再通过一组可学习的 object queries 在 Transformer decoder 中和图像特征交互，最后每个 query 输出一个类别和边界框。
 
@@ -739,21 +735,21 @@ DETR 是一种基于 Transformer 的端到端目标检测算法，全称是 Dete
 
 DETR 的优点是结构简洁、端到端、不需要 anchor 和 NMS，并且 Transformer 可以建模全局上下文和目标之间的关系。缺点是原始 DETR 收敛较慢，对小目标不够友好，计算量也较大。后续的 Deformable DETR、DINO、RT-DETR 等方法主要就是围绕收敛速度、多尺度特征和实时性进行改进。
 
-## 二十七、如果面试官追问：DETR 为什么不需要 NMS？
+## 二十七、延伸知识：DETR 为什么不需要 NMS？
 
-可以回答：
+核心说明：
 
 因为 DETR 的训练不是让大量候选框分别预测目标，而是通过 Hungarian Matching 做一对一集合匹配。每个真实目标只会匹配一个预测 query，而其他没有匹配到目标的 query 会被训练成 no object。这样模型学习到的是直接输出一组不重复的目标集合，而不是输出大量重叠候选框。因此推理时通常只需要过滤低置信度和 no object 预测，不需要再用 NMS 去重。
 
-## 二十八、如果面试官追问：Object Query 怎么理解？
+## 二十八、延伸知识：Object Query 怎么理解？
 
-可以回答：
+核心说明：
 
-Object query 可以理解为 DETR 中预设的一组可学习目标槽位。每个 query 会在 decoder 中通过 cross-attention 去图像特征中查询和自己相关的目标信息，最后输出一个类别和边界框。如果某个 query 匹配到了真实目标，它就负责预测这个目标；如果没有匹配到目标，它就预测 no object。所以 object query 不是图像中的某个固定位置，而是一组学习出来的目标查询向量。
+Object query 可以理解为 DETR 中预设的一组可学习目标槽位。每个 query 会在 decoder 中通过 cross-attention 去图像特征中查询和自身相关的目标信息，最后输出一个类别和边界框。如果某个 query 匹配到了真实目标，它就负责预测这个目标；如果没有匹配到目标，它就预测 no object。所以 object query 不是图像中的某个固定位置，而是一组学习出来的目标查询向量。
 
-## 二十九、如果面试官追问：DETR 和 YOLO 有什么区别？
+## 二十九、延伸知识：DETR 和 YOLO 有什么区别？
 
-可以回答：
+核心说明：
 
 YOLO 是典型的单阶段检测器，它通常在特征图上进行密集预测，产生大量候选框，然后通过置信度过滤和 NMS 得到最终结果。DETR 则是基于 Transformer 的集合预测检测器，它使用固定数量的 object queries 直接预测最终目标集合，并通过 Hungarian Matching 做一对一监督，因此不需要 anchor 和 NMS。
 

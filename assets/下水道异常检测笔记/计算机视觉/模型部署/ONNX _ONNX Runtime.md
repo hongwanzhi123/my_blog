@@ -6,17 +6,17 @@
 了解 CPU/GPU/TensorRT/OpenVINO 等推理后端
 了解模型部署优化和常见问题排查
 
-## 一、先明确：招聘要求到底想要你会什么？
+## 一、先明确：技术呈现要求到底想要会什么？
 
-招聘写：
+技术呈现写：
 
 掌握 ONNX / ONNX Runtime 进行模型部署
 
-一般不是让你只会一句：
+一般不是让只会一句：
 
 torch.onnx.export(...)
 
-而是希望你能完成完整流程：
+而是希望能完成完整流程：
 
 PyTorch / TensorFlow 训练模型
 ↓
@@ -58,7 +58,7 @@ Open Neural Network Exchange
 
 它本质上是一个模型中间表示格式。
 
-你用 PyTorch 训练出来的模型通常是：
+用 PyTorch 训练出来的模型通常是：
 
 .pth
 .pt
@@ -81,7 +81,7 @@ ONNX Runtime
 
 这时候直接使用 PyTorch 不一定方便。
 
-所以我们会把模型导出成：
+所以会把模型导出成：
 
 .onnx
 
@@ -107,7 +107,7 @@ ORT
 
 它是一个运行 ONNX 模型的推理引擎。
 
-你可以这样区分：
+可以这样区分：
 
 ONNX：模型文件格式
 ONNX Runtime：执行 ONNX 模型的推理框架
@@ -295,7 +295,7 @@ opset_version=12
 
 ONNX Runtime 通过 Execution Provider 使用不同硬件。
 
-你可以理解成：
+可以理解成：
 
 Execution Provider 是 ONNX Runtime 的硬件后端。
 
@@ -326,7 +326,7 @@ providers=["TensorrtExecutionProvider", "CUDAExecutionProvider", "CPUExecutionPr
 
 ## 七、最完整的模型部署流程
 
-你要把这个流程背熟：
+需要把这个流程背熟：
 
 1. 训练模型
 2. 保存权重
@@ -433,7 +433,7 @@ dynamic_axes：动态维度
 
 ## 九、dynamic_axes 是什么？
 
-如果你不设置 dynamic axes，模型可能只能接受固定 batch size。
+如果不设置 dynamic axes，模型可能只能接受固定 batch size。
 
 比如 dummy input 是：
 
@@ -441,7 +441,7 @@ dynamic_axes：动态维度
 
 导出的模型可能固定只能输入 batch=1。
 
-但是部署时你可能想输入：
+但是部署时可能想输入：
 
 [1, 1, 28, 28]
 [8, 1, 28, 28]
@@ -495,7 +495,7 @@ for out in session.get_outputs():
 input ['batch_size', 1, 28, 28] tensor(float)
 logits ['batch_size', 10] tensor(float)
 
-面试时你要知道如何获取输入输出名：
+知识总结时需要知道如何获取输入输出名：
 
 input_name = session.get_inputs()[0].name
 output_name = session.get_outputs()[0].name
@@ -532,7 +532,7 @@ numpy.ndarray
 
 np.float32
 
-如果你传 float64，可能报错。
+如果传 float64，可能报错。
 
 ## 十三、PyTorch 和 ONNX 输出一致性验证
 
@@ -676,7 +676,7 @@ NMS
 ↓
 画框 / 输出 bbox
 
-所以招聘要求里写 ONNX Runtime，面试很可能会问：
+所以技术呈现要求里写 ONNX Runtime，知识总结很可能会问：
 
 YOLO 导出 ONNX 后怎么推理？
 NMS 在模型里还是在外面？
@@ -687,7 +687,7 @@ letterbox 的 pad 怎么处理？
 
 ## 十六、YOLO 导出 ONNX
 
-如果你用 Ultralytics YOLO：
+如果用 Ultralytics YOLO：
 
 from ultralytics import YOLO
 
@@ -717,7 +717,7 @@ model.export(
 
 ## 十七、YOLO ONNX 推理流程
 
-下面给你一个目标检测部署骨架。
+下面给一个目标检测部署骨架。
 
 1. letterbox 预处理
 
@@ -833,7 +833,7 @@ class YOLOONNXDetector:
 
 有的导出时已经带 NMS，有的不带。
 
-所以你要根据输出 shape 写后处理。
+所以需要根据输出 shape 写后处理。
 
 ## 十八、NMS 是什么？
 
@@ -883,7 +883,7 @@ YOLO 输入前做了 letterbox：
 
 模型输出的 bbox 是相对于 640×640 的。
 
-你要把它还原到原图：
+需要把它还原到原图：
 
 x1 = (x1 - pad_x) / scale
 y1 = (y1 - pad_y) / scale
@@ -1182,7 +1182,7 @@ ONNX Runtime 通常要：
 
 np.float32
 
-如果你传：
+如果传：
 
 np.float64
 
@@ -1266,7 +1266,7 @@ opset_version=17
 
 ## 二十八、工业视觉部署中的典型 ONNX Runtime 架构
 
-假设你做工业缺陷检测，系统可能是：
+假设做工业缺陷检测，系统可能是：
 
 工业相机
 ↓
@@ -1286,46 +1286,40 @@ ONNX Runtime 推理
 ↓
 PLC / 上位机通信
 
-## 二十九、面试问答准备
+## 二十九、知识总结问答准备
 问题 1：ONNX 和 ONNX Runtime 区别？
 
-回答：
-
+核心说明：
 ONNX 是一种开放的模型交换格式，用于保存模型的计算图、参数、输入输出和算子信息；ONNX Runtime 是执行 ONNX 模型的推理引擎，可以根据不同 Execution Provider 在 CPU、CUDA、TensorRT、OpenVINO 等硬件后端上运行模型。
 
 问题 2：PyTorch 模型怎么导出 ONNX？
 
-回答：
-
+核心说明：
 首先加载训练好的模型并切换到 model.eval()，然后准备一个和真实输入形状一致的 dummy input，使用 torch.onnx.export 导出模型。导出时需要指定 input_names、output_names、opset_version。如果需要支持动态 batch，则设置 dynamic_axes。导出后用 onnx.checker.check_model 检查模型合法性，再用 ONNX Runtime 推理并和 PyTorch 输出对比误差。
 
 问题 3：为什么要验证 PyTorch 和 ONNX 输出一致性？
 
-回答：
-
+核心说明：
 因为模型导出过程中可能出现算子转换差异、输入预处理不一致、BatchNorm/Dropout 模式错误等问题。如果 ONNX 输出和 PyTorch 输出差异很大，说明部署模型可能不可靠。通常会用同一个输入分别跑 PyTorch 和 ONNX Runtime，比较 max abs diff 和 mean abs diff，确保误差在可接受范围内。
 
 问题 4：ONNX Runtime 如何使用 GPU？
 
-回答：
-
+核心说明：
 需要安装 onnxruntime-gpu，然后创建 InferenceSession 时指定 CUDAExecutionProvider，通常写成 providers=["CUDAExecutionProvider", "CPUExecutionProvider"]。可以通过 session.get_providers() 检查实际使用的 provider。如果没有 CUDA provider，可能是 CUDA/cuDNN 版本不匹配或安装的是 CPU 版 onnxruntime。
 
 问题 5：YOLO 部署的难点是什么？
 
-回答：
-
+核心说明：
 YOLO 部署难点主要在预处理和后处理。预处理要保证和训练一致，包括 letterbox resize、BGR 转 RGB、归一化、HWC 转 CHW。后处理要解析模型输出，进行置信度过滤、NMS，然后把 bbox 从模型输入尺寸映射回原图尺寸。不同 YOLO 版本导出的 ONNX 输出格式可能不同，所以需要根据输出 shape 编写对应解析逻辑。
 
 问题 6：ONNX 模型怎么优化？
 
-回答：
-
+核心说明：
 可以从几个方向优化。第一是使用 ONNX Runtime 的图优化；第二是选择合适的 Execution Provider，例如 CPU、CUDA、TensorRT、OpenVINO；第三是使用 FP16 或 INT8 量化减少计算和内存；第四是固定输入尺寸或合理设置动态 batch；第五是减少预处理和后处理耗时，比如优化 NMS、使用批量推理或异步流水线。
 
-## 三十、你应该怎么练才能达到招聘要求？
+## 三十、应该怎么练才能达到技术呈现要求？
 
-我建议你按 4 个小项目练。
+可按 4 个小项目练。
 
 项目 1：手写数字 CNN 导出 ONNX
 
@@ -1336,7 +1330,7 @@ YOLO 部署难点主要在预处理和后处理。预处理要保证和训练一
 ONNX Runtime 推理
 生成 Kaggle submission.csv
 
-你要掌握：
+需要掌握：
 
 torch.onnx.export
 dynamic_axes
@@ -1400,9 +1394,9 @@ OpenCV 连通域过滤
 
 这对工业视觉很有用。
 
-## 三十、你应该怎么练才能达到招聘要求？
+## 三十、应该怎么练才能达到技术呈现要求？
 
-我建议你按 4 个小项目练。
+可按 4 个小项目练。
 
 项目 1：手写数字 CNN 导出 ONNX
 
@@ -1413,7 +1407,7 @@ OpenCV 连通域过滤
 ONNX Runtime 推理
 生成 Kaggle submission.csv
 
-你要掌握：
+需要掌握：
 
 torch.onnx.export
 dynamic_axes

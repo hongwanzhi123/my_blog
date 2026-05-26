@@ -1,5 +1,5 @@
 # Yolo
-下面我按目标检测基础 → YOLO核心思想 → YOLO各版本演进 → 训练与推理流程 → 优缺点 → 面试回答来详细介绍。
+下面按目标检测基础 → YOLO核心思想 → YOLO各版本演进 → 训练与推理流程 → 优缺点 → 知识总结回答来详细介绍。
 
 ## 一、YOLO 是什么？
 
@@ -605,7 +605,7 @@ Ultralytics 后来推出了 YOLO11。
 
 Ultralytics 文档将 YOLO11 描述为面向实时检测和多任务视觉应用的模型，并说明它支持检测、分割、分类、姿态估计和 OBB 等任务。
 
-需要注意，Ultralytics 的命名从 YOLOv8 到 YOLO11，并不等同于 Joseph Redmon 原始 YOLO 路线的直接延续，而是 Ultralytics 自己的工程化模型系列。
+需要注意，Ultralytics 的命名从 YOLOv8 到 YOLO11，并不等同于 Joseph Redmon 原始 YOLO 路线的直接延续，而是 Ultralytics 自身的工程化模型系列。
 
 ## 二十一、YOLOv12：Attention-Centric YOLO
 
@@ -1015,8 +1015,7 @@ YOLOv10 这类 NMS-free 方向，就是在尝试缓解传统 NMS 后处理带来
 
 如果标注框不准，模型会学到错误边界。
 
-常见问题：
-
+核心问题：
 漏标
 错标
 框太大
@@ -1062,13 +1061,13 @@ YOLO 最初主要用于目标检测，但现在很多版本已经支持多任务
 
 YOLOv8、YOLO11、YOLO12 等 Ultralytics 系列都支持检测、分割、分类、姿态估计等任务。
 
-## 三十一、如果你要做项目，怎么选 YOLO 版本？
+## 三十一、如果需要做项目，怎么选 YOLO 版本？
 
 可以按场景选。
 
-1. 想快速做项目、简历、Demo
+1. 想快速做项目、资料、Demo
 
-推荐：
+常用：
 
 YOLOv8
 YOLO11
@@ -1154,38 +1153,34 @@ TensorRT 支持
 13. 在测试集上最终评估
 14. 导出 ONNX / TensorRT / OpenVINO
 15. 部署到服务器、边缘设备或移动端
-## 三十三、YOLO 面试中可以怎么回答？
+## 三十三、YOLO 知识总结中可以怎么回答？
 
-如果面试官问：
-
-### 你了解 YOLO 吗？
-
-可以这样回答：
+核心说明：
 
 YOLO 是一种典型的单阶段目标检测算法，它的核心思想是将目标检测看成一个统一的回归问题，通过一次前向传播直接预测图像中目标的类别、位置和置信度。相比 Faster R-CNN 这类两阶段检测器，YOLO 不需要先生成候选区域，因此推理速度更快，更适合实时检测和工程部署。
 
 早期 YOLOv1 会将图像划分成网格，每个网格负责预测中心点落在该区域内的目标。后续 YOLOv2 引入 anchor boxes、多尺度训练等策略，YOLOv3 使用 Darknet-53 和多尺度预测增强小目标检测能力，YOLOv4 结合 CSPDarknet、SPP、PAN 和 Mosaic、CIoU 等训练技巧提升速度与精度平衡。后来 YOLOv5、YOLOv8、YOLO11 等版本更偏工程化，支持 PyTorch 训练、多平台部署和多任务扩展。YOLOX、YOLOv8 等进一步采用 anchor-free 和 decoupled head，YOLOv10 则尝试 NMS-free 的端到端检测方向。
 
-## 三十四、如果面试官追问：YOLO 为什么适合实时检测？
+## 三十四、延伸知识：YOLO 为什么适合实时检测？
 
-可以回答：
+核心说明：
 
 因为 YOLO 是单阶段检测器，它直接从整张图像中预测目标类别和边界框，不需要像两阶段检测器那样先生成候选区域再逐个分类。YOLO 的 backbone 对整张图像只提取一次特征，然后通过检测头在多个尺度上同时预测目标，因此计算流程更统一，推理延迟更低。同时 YOLO 系列在结构上不断使用 CSP、PAN、SPP、ELAN、轻量化检测头等设计，使得它在速度和精度之间取得较好的平衡。
 
-## 三十五、如果面试官追问：YOLO 的输出是什么？
+## 三十五、延伸知识：YOLO 的输出是什么？
 
-可以回答：
+核心说明：
 
 YOLO 的输出通常包括边界框坐标、目标置信度和类别概率。边界框可以表示为中心点坐标和宽高，也可以转换成左上角和右下角坐标。目标置信度表示这个预测框中是否存在物体，类别概率表示该物体属于每个类别的可能性。最终通常会把 objectness 和 class probability 相乘得到类别置信度，然后通过置信度阈值过滤和 NMS 去除重复框，得到最终检测结果。
 
-## 三十六、如果面试官追问：YOLO 的损失函数包含什么？
+## 三十六、延伸知识：YOLO 的损失函数包含什么？
 
-可以回答：
+核心说明：
 
 YOLO 的损失函数通常由三部分组成：边界框回归损失、目标置信度损失和类别分类损失。边界框损失用于衡量预测框和真实框的位置差异，现代 YOLO 常使用 IoU、GIoU、DIoU、CIoU 或 DFL 等形式；objectness loss 用于判断预测框中是否有目标；classification loss 用于判断目标类别。整体可以概括为 box loss、objectness loss 和 classification loss 的加权组合。
 
-## 三十七、如果面试官追问：Anchor-based 和 Anchor-free 区别？
+## 三十七、延伸知识：Anchor-based 和 Anchor-free 区别？
 
-可以回答：
+核心说明：
 
 Anchor-based 方法会在每个特征图位置预设多个不同尺度和长宽比的 anchor box，模型预测的是相对于 anchor 的偏移量和类别分数。这种方法有先验信息，训练比较稳定，但需要设计 anchor，且对数据集分布敏感。Anchor-free 方法不依赖预设框，而是直接预测目标中心点、边界距离或框坐标，结构更简洁，减少了 anchor 相关超参数。YOLOX 和 YOLOv8 这类模型都采用了 anchor-free 思路。

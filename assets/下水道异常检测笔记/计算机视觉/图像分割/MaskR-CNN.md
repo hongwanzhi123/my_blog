@@ -641,7 +641,7 @@ Mask R-CNN 适合：
 
 ## 二十四、Mask R-CNN 不适合什么场景？
 
-如果你的任务是：
+如果任务是：
 
 只需要判断每个像素属于哪个类别
 不需要区分同类不同实例
@@ -654,7 +654,7 @@ Mask R-CNN 适合：
 
 那么 U-Net、DeepLab、SegFormer 可能更直接。
 
-如果你的任务是：
+如果任务是：
 
 实时视频检测
 移动端部署
@@ -693,7 +693,7 @@ Dice
 
 ## 二十六、Mask R-CNN 项目训练流程
 
-如果你要做一个 Mask R-CNN 项目，大致流程是：
+如果需要做一个 Mask R-CNN 项目，大致流程是：
 
 1. 明确实例分割类别
 2. 收集图像数据
@@ -805,33 +805,29 @@ RPN 学会提出候选区域
 bbox 头学会精修边界框
 mask 头学会预测实例轮廓
 
-## 二十九、面试中如何介绍 Mask R-CNN？
+## 二十九、Mask R-CNN 核心总结
 
-如果面试官问：
-
-你了解 Mask R-CNN 吗？
-
-可以这样回答：
+核心说明：
 
 Mask R-CNN 是一种经典的实例分割算法，可以看作是在 Faster R-CNN 的基础上增加了一个并行的 mask 分支。它首先使用 backbone 和 FPN 提取图像多尺度特征，然后通过 RPN 生成候选区域 proposals。对于每个 proposal，模型使用 RoIAlign 提取固定尺寸的 RoI 特征，之后分别送入分类分支、边界框回归分支和 mask 分支。分类分支判断目标类别，bbox 分支修正目标框，mask 分支为每个实例预测像素级掩码。
 
 Mask R-CNN 的关键改进之一是 RoIAlign。相比 RoI Pooling，RoIAlign 不会对 RoI 坐标进行取整，而是使用双线性插值保留更精确的空间对齐信息，这对像素级 mask 预测非常重要。它的整体损失包括分类损失、边界框回归损失和 mask 损失。由于它能同时输出类别、边界框和实例 mask，所以非常适合需要区分同类不同目标的实例分割任务。
 
-## 三十、如果面试官追问：Mask R-CNN 为什么要用 RoIAlign？
+## 三十、延伸知识：Mask R-CNN 为什么要用 RoIAlign？
 
-可以回答：
+核心说明：
 
 因为 mask 预测是像素级任务，对空间位置非常敏感。传统 RoI Pooling 会把 RoI 坐标映射到特征图时进行取整，这会产生量化误差，导致 RoI 特征和原图目标位置不完全对齐。RoIAlign 取消取整操作，保留浮点坐标，并通过双线性插值采样特征，从而减少空间错位，提高 mask 边界预测精度。
 
-## 三十一、如果面试官追问：Mask R-CNN 和 Faster R-CNN 有什么区别？
+## 三十一、延伸知识：Mask R-CNN 和 Faster R-CNN 有什么区别？
 
-可以回答：
+核心说明：
 
 Faster R-CNN 主要做目标检测，输出目标类别和边界框。Mask R-CNN 在 Faster R-CNN 的基础上增加了一个 mask 分支，用来为每个 RoI 预测实例级分割 mask。同时 Mask R-CNN 使用 RoIAlign 替代 RoI Pooling，改善 RoI 特征和原图之间的空间对齐问题。因此 Mask R-CNN 可以同时完成目标检测和实例分割。
 
-## 三十二、如果面试官追问：Mask R-CNN 和 U-Net 有什么区别？
+## 三十二、延伸知识：Mask R-CNN 和 U-Net 有什么区别？
 
-可以回答：
+核心说明：
 
 U-Net 通常用于语义分割，它对整张图像做像素级分类，但一般不区分同一类别中的不同实例。Mask R-CNN 是实例分割算法，它会先检测出每个目标实例，再为每个实例预测独立 mask。比如图中有三个人，U-Net 通常输出所有人的整体 person 区域，而 Mask R-CNN 会分别输出 person_1、person_2、person_3 的 mask。所以如果任务需要区分同类不同目标，Mask R-CNN 更合适；如果只需要分割类别区域，U-Net 更直接。
 

@@ -25,9 +25,9 @@ Layer 3
 3. 表示通常是某一时刻的 activation vector
 4. 模型内部没有显式“思考时间”
 
-CTM 的出发点是：真实大脑不是简单的一次前向传播，而是神经元活动会随时间演化，不同神经元之间的同步关系也会携带信息。所以 CTM 不是只看某一层的静态激活，而是引入一个内部时间维度，让神经活动在多个 internal ticks 中展开。论文说 CTM 的两个核心创新是：每个神经元用自己的参数处理输入历史，以及把神经同步直接作为 latent representation。
+CTM 的出发点是：真实大脑不是简单的一次前向传播，而是神经元活动会随时间演化，不同神经元之间的同步关系也会携带信息。所以 CTM 不是只看某一层的静态激活，而是引入一个内部时间维度，让神经活动在多个 internal ticks 中展开。论文说 CTM 的两个核心创新是：每个神经元用自身的参数处理输入历史，以及把神经同步直接作为 latent representation。
 
-你可以先这样理解：
+可以先这样理解：
 
 Transformer 更像“一层一层处理 token”；CTM 更像“模型内部持续运转一段时间，在这个过程中观察数据、更新神经状态、计算神经元同步关系，然后逐步形成答案”。
 
@@ -78,7 +78,7 @@ CTM 内部思考 3 次
 ↓
 输出预测
 
-论文称这个内部维度是 decoupled from data dimensions，也就是和输入数据维度解耦。它不是图像的宽高，也不是文本 token 序列，而是模型自己内部展开思考的时间轴。
+论文称这个内部维度是 decoupled from data dimensions，也就是和输入数据维度解耦。它不是图像的宽高，也不是文本 token 序列，而是模型自身内部展开思考的时间轴。
 
 ## 四、CTM 架构整体流程
 
@@ -172,7 +172,7 @@ a^(t-M+1), a^(t-M+2), ..., a^t
 
 这个设计的意义是：
 
-神经元不是只根据当前信号做反应，而是根据一段时间内收到的信号历史来决定自己的输出。
+神经元不是只根据当前信号做反应，而是根据一段时间内收到的信号历史来决定输出。
 
 这就引入了时间动态。
 
@@ -186,7 +186,7 @@ z = activation(w · x + b)
 
 也就是说，每个神经元通常只是一个线性加权 + 激活函数。
 
-CTM 中的神经元更复杂。每个神经元都有自己的小模型，叫：
+CTM 中的神经元更复杂。每个神经元都有专属小模型，叫：
 
 Neuron-Level Model, NLM
 
@@ -196,11 +196,11 @@ Neuron-Level Model, NLM
 
 某个神经元最近 M 次接收到的信号
 ↓
-这个神经元自己的 MLP
+这个神经元自身的 MLP
 ↓
 当前神经元输出 z^t
 
-论文中说，每个神经元有一个 privately parameterized NLM，用自己的参数处理 pre-activation history，并生成 post-activation；官方 GitHub 也说明每个神经元使用 unique weight parameters 来处理历史输入信号。
+论文中说，每个神经元有一个 privately parameterized NLM，用自身的参数处理 pre-activation history，并生成 post-activation；官方 GitHub 也说明每个神经元使用 unique weight parameters 来处理历史输入信号。
 
 这和传统神经网络差别很大。
 
@@ -275,7 +275,7 @@ S^t[i, j] = neuron i 和 neuron j 在时间上的同步程度
 
 ## 十一、为什么同步表示重要？
 
-你可以用一个简单比喻理解。
+可以用一个简单比喻理解。
 
 假设一个乐队里有很多乐器：
 
@@ -285,9 +285,9 @@ S^t[i, j] = neuron i 和 neuron j 在时间上的同步程度
 吉他
 小提琴
 
-如果你只看某一瞬间谁声音大，信息有限。
+如果只看某一瞬间谁声音大，信息有限。
 
-但如果你观察一段时间，会发现：
+但如果观察一段时间，会发现：
 
 鼓和贝斯总是一起进入节奏
 钢琴和小提琴在某些段落呼应
@@ -360,7 +360,7 @@ tick 3：继续调整注意位置
 ...
 最后预测类别
 
-论文和官方页面都展示了 CTM 在图像任务中会出现类似“look around”的注意行为；论文还提到这种行为并不是通过专门监督信号训练出来的，而是从内部动态中自然出现的。
+论文和官方页面都呈现了 CTM 在图像任务中会出现类似“look around”的注意行为；论文还提到这种行为并不是通过专门监督信号训练出来的，而是从内部动态中自然出现的。
 
 所以 CTM 的观察过程可以理解为：
 
@@ -383,7 +383,7 @@ tick 3：继续调整注意位置
 1. 当前 post-activations 和 attention output 输入 Synapse Model
 2. Synapse Model 产生 pre-activations a^t
 3. 把 a^t 加入 pre-activation history A^t
-4. 每个神经元自己的 NLM 读取对应历史 A^t
+4. 每个神经元自身的 NLM 读取对应历史 A^t
 5. NLM 输出 post-activation z^t
 6. 把 z^t 加入 post-activation history Z^t
 7. 根据 Z^t 计算 synchronization matrix S^t
@@ -398,7 +398,7 @@ tick 3：继续调整注意位置
 
 ## 十六、CTM 和 RNN/LSTM 的区别
 
-你可能会觉得 CTM 有点像 RNN。
+可能会觉得 CTM 有点像 RNN。
 
 确实，CTM 有 recurrence，但它和 RNN/LSTM 不一样。
 
@@ -435,7 +435,7 @@ internal tick 3
 此外，CTM 不是只维护一个 hidden state，而是：
 
 每个神经元有 pre-activation history
-每个神经元有自己的 NLM
+每个神经元有自身的 NLM
 模型计算 neuron-to-neuron synchronization
 同步关系作为 latent representation
 
@@ -532,7 +532,7 @@ CTM 内部 tick 开始运行
 ↓
 输出类别预测
 
-论文展示了 CTM 在 ImageNet-1K 分类中的示例，并提到它的 attention process 会呈现出类似“看来看去”的轨迹。
+论文呈现了 CTM 在 ImageNet-1K 分类中的示例，并提到它的 attention process 会呈现出类似“看来看去”的轨迹。
 
 这和普通 CNN/ViT 的区别是：
 
@@ -540,7 +540,7 @@ CNN/ViT：一次前向传播得到图像表示
 CTM：多个内部 tick 中动态观察和更新表示
 ## 二十、CTM 在迷宫任务中怎么工作？
 
-CTM 的一个代表展示是 2D maze solving。
+CTM 的一个代表呈现是 2D maze solving。
 
 普通模型做迷宫可能需要：
 
@@ -548,7 +548,7 @@ CTM 的一个代表展示是 2D maze solving。
 搜索算法
 路径规划模块
 
-CTM 展示了一种不同方式：
+CTM 呈现了一种不同方式：
 
 通过内部 tick 逐步观察迷宫
 形成类似路径的内部动态
@@ -558,7 +558,7 @@ CTM 展示了一种不同方式：
 
 这也是 CTM 受到关注的原因之一：它的行为看起来不只是简单分类，而是有一个逐步展开的内部过程。
 
-## 二十一、CTM 的能力展示
+## 二十一、CTM 的能力呈现
 
 公开资料中提到 CTM 被用于多种任务，包括：
 
@@ -569,7 +569,7 @@ ImageNet 分类
 问答
 强化学习任务
 
-GitHub README 中列出了这些任务，并提供了对应代码结构；论文摘要和方法部分也提到 CTM 在 ImageNet-1K、2D maze、parity computation 等任务上展示了能力。
+GitHub README 中列出了这些任务，并提供了对应代码结构；论文摘要和方法部分也提到 CTM 在 ImageNet-1K、2D maze、parity computation 等任务上呈现了能力。
 
 这说明 CTM 不是只为某一个任务设计的，而是想作为一种通用神经网络架构来探索。
 
@@ -583,7 +583,7 @@ GitHub README 中列出了这些任务，并提供了对应代码结构；论文
 简单问题可以少想
 复杂问题可以多想
 
-论文中也提到 CTM 展示了 native adaptive computation time，也就是内部计算时间可以成为模型能力的一部分。
+论文中也提到 CTM 呈现了 native adaptive computation time，也就是内部计算时间可以成为模型能力的一部分。
 
 2. 表示更动态
 
@@ -606,7 +606,7 @@ CTM 表示的是：
 哪些神经元同步
 模型什么时候形成预测
 
-论文展示了 CTM 的注意过程和神经活动可视化，并把它作为解释内部过程的一个自然途径。
+论文呈现了 CTM 的注意过程和神经活动可视化，并把它作为解释内部过程的一个自然途径。
 
 4. 更接近生物启发
 
@@ -630,15 +630,15 @@ CTM 目前更像一个研究型架构，不是像 ResNet、Transformer、YOLO �
 4. 对大规模任务、工业任务、LLM 规模扩展还需要更多验证
 5. 生态不如 Transformer 成熟
 
-也就是说，你现在做 Kaggle 图像分类、目标检测、医学分割，不会直接用 CTM 替代 CNN、ViT、YOLO 或 Mask2Former。
+也就是说，当前做 Kaggle 图像分类、目标检测、医学分割，不会直接用 CTM 替代 CNN、ViT、YOLO 或 Mask2Former。
 
-它更适合你作为：
+它更适合作为：
 
 前沿架构理解
-研究型面试谈资
+研究型知识总结谈资
 神经网络动态计算方向
 ## 二十四、用一句话概括 CTM
 
 CTM 可以概括成：
 
-CTM 是一种引入内部时间轴的神经网络架构，它让神经元活动在多个 internal ticks 中展开，每个神经元用自己的小模型处理历史输入，并通过神经元活动的同步关系形成 latent representation，用这个同步表示来观察数据、产生输出和进行决策。
+CTM 是一种引入内部时间轴的神经网络架构，它让神经元活动在多个 internal ticks 中展开，每个神经元用专属小模型处理历史输入，并通过神经元活动的同步关系形成 latent representation，用这个同步表示来观察数据、产生输出和进行决策。

@@ -200,9 +200,9 @@ Masked Attention
 
 也就是：
 
-让 query 在 cross-attention 时主要关注自己当前预测 mask 覆盖的区域，而不是整张图。
+让 query 在 cross-attention 时主要关注当前预测 mask 覆盖的区域，而不是整张图。
 
-这使得每个 query 更专注于自己负责的目标或区域。
+这使得每个 query 更专注于负责的目标或区域。
 
 ## 六、Mask2Former 的整体结构
 
@@ -328,7 +328,7 @@ query_41 → sky mask
 
 Transformer Decoder 的任务是：
 
-让 queries 从图像特征中提取自己需要的信息，并逐层优化 mask 和类别预测。
+让 queries 从图像特征中提取所需信息，并逐层优化 mask 和类别预测。
 
 每一层 decoder 大致做：
 
@@ -363,7 +363,7 @@ masked cross-attention
 
 Mask2Former 的 masked attention 是：
 
-每个 query 只在自己预测的 mask 区域内做 cross-attention
+每个 query 只在自身预测的 mask 区域内做 cross-attention
 
 也就是说，如果某个 query 当前预测的是一辆车的 mask，那么下一层 decoder 中，这个 query 主要关注这辆车所在区域，而不是整张图。
 
@@ -729,13 +729,13 @@ Mask2Former：
 小数据表现	通常较稳	更依赖预训练和数据
 适合场景	医学、缺陷、小样本	通用分割、大规模数据、多任务
 
-如果你的任务是：
+如果任务是：
 
 只分割病灶区域 / 裂缝区域 / 缺陷区域
 
 U-Net 可能更简单直接。
 
-如果你的任务是：
+如果任务是：
 
 既要语义分割，又要实例分割，甚至全景分割
 
@@ -793,7 +793,7 @@ Mask2Former 的优点主要有：
 6. 多尺度特征和 pixel decoder 有利于精细 mask 预测
 7. 在多个主流分割数据集上表现很强
 
-特别是它的统一性非常适合在面试中讲：
+特别是它的统一性非常适合在知识总结中讲：
 
 传统方法是 task-specific architecture
 Mask2Former 是 universal image segmentation architecture
@@ -846,7 +846,7 @@ Mask2Former 官方仓库列出的主要特性包括单一架构支持 panoptic�
 
 ## 三十一、Mask2Former 不太适合什么场景？
 
-如果你的场景是：
+如果场景是：
 
 移动端实时分割
 低算力边缘设备
@@ -915,34 +915,30 @@ Panoptic Quality
 
 也就是既看 mask 准不准，也看实例和类别识别对不对。
 
-## 三十五、面试中如何介绍 Mask2Former？
+## 三十五、Mask2Former 核心总结
 
-如果面试官问：
-
-你了解 Mask2Former 吗？
-
-可以这样回答：
+核心说明：
 
 Mask2Former 是一种基于 Transformer 的通用图像分割框架，它的核心思想是把语义分割、实例分割和全景分割统一成 mask classification 问题。传统语义分割通常是对每个像素直接分类，而 Mask2Former 是通过一组 object queries 预测若干个 mask，并为每个 mask 预测类别。这样同一套输出形式可以适配语义分割、实例分割和全景分割。
 
-它的结构主要包括 backbone、pixel decoder、Transformer decoder 和 mask classification head。Backbone 提取多尺度图像特征，pixel decoder 融合多尺度特征并生成像素级 embedding，Transformer decoder 使用 queries 与图像特征交互，最终每个 query 输出一个类别和一个 mask。Mask2Former 的关键改进是 masked attention，它会限制 query 的 cross-attention 主要发生在当前预测 mask 区域内，使 query 更专注于自己负责的目标或区域，从而提高分割质量和效率。
+它的结构主要包括 backbone、pixel decoder、Transformer decoder 和 mask classification head。Backbone 提取多尺度图像特征，pixel decoder 融合多尺度特征并生成像素级 embedding，Transformer decoder 使用 queries 与图像特征交互，最终每个 query 输出一个类别和一个 mask。Mask2Former 的关键改进是 masked attention，它会限制 query 的 cross-attention 主要发生在当前预测 mask 区域内，使 query 更专注于负责的目标或区域，从而提高分割质量和效率。
 
 相比 U-Net、DeepLab 这类主要面向语义分割的模型，Mask2Former 更适合复杂场景下的统一分割任务；相比 Mask R-CNN，它不依赖 RPN 和 RoIAlign，而是直接用 query 预测 mask，结构上更接近 DETR 系列的集合预测思想。
 
-## 三十六、如果面试官追问：Mask2Former 为什么能统一三种分割？
+## 三十六、延伸知识：Mask2Former 为什么能统一三种分割？
 
-可以回答：
+核心说明：
 
 因为它把分割任务统一成“预测一组 mask，并给每个 mask 分类”的问题。对于语义分割，可以把同类别的 mask 合并成最终类别区域；对于实例分割，每个 thing 类 query 的 mask 就对应一个实例；对于全景分割，things 类保留独立实例，stuff 类合并同类区域。因此不同任务只是在同一组 mask classification 输出上采用不同后处理方式，而模型主体可以保持一致。
 
-## 三十七、如果面试官追问：Masked Attention 的作用是什么？
+## 三十七、延伸知识：Masked Attention 的作用是什么？
 
-可以回答：
+核心说明：
 
-Masked attention 是 Mask2Former 的核心设计。普通 Transformer cross-attention 中，每个 query 会关注整张图像的所有位置，这会带来很多无关背景干扰。Masked attention 会利用上一层预测得到的 mask，把 query 的注意力限制在该 mask 区域内，使 query 更专注于自己负责的目标或区域。这样可以让 mask 逐层细化，同时减少无关区域干扰，提升分割效果。
+Masked attention 是 Mask2Former 的核心设计。普通 Transformer cross-attention 中，每个 query 会关注整张图像的所有位置，这会带来很多无关背景干扰。Masked attention 会利用上一层预测得到的 mask，把 query 的注意力限制在该 mask 区域内，使 query 更专注于负责的目标或区域。这样可以让 mask 逐层细化，同时减少无关区域干扰，提升分割效果。
 
-## 三十八、如果面试官追问：Mask2Former 和 Mask R-CNN 有什么区别？
+## 三十八、延伸知识：Mask2Former 和 Mask R-CNN 有什么区别？
 
-可以回答：
+核心说明：
 
 Mask R-CNN 是两阶段实例分割方法，它先通过 RPN 生成候选框，再用 RoIAlign 提取每个候选区域的特征，最后预测类别、边界框和 mask。Mask2Former 不依赖候选框和 RoIAlign，而是通过 Transformer decoder 中的一组 queries 直接预测一组 mask 和类别。Mask R-CNN 主要面向实例分割，而 Mask2Former 使用 mask classification 形式，可以统一处理语义分割、实例分割和全景分割。

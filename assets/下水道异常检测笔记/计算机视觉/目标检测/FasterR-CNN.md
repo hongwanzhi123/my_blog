@@ -20,7 +20,7 @@ Faster R-CNN 是一个经典的两阶段目标检测算法。
 person: 0.95, bbox = [x1, y1, x2, y2]
 car:    0.88, bbox = [x1, y1, x2, y2]
 
-Faster R-CNN 的核心贡献是提出了 **RPN，Region Proposal Network，区域候选网络**。它不再依赖 Selective Search 这类传统候选框算法，而是让神经网络自己学习“哪里可能有目标”，并且和后续检测网络共享卷积特征，从而显著提高检测效率。原论文指出，RPN 可以和 Fast R-CNN 共享整图卷积特征，使候选区域生成几乎没有额外成本，并在 VGG-16 上达到约 5 fps，同时只使用约 300 个 proposal 就能取得很好的检测效果.
+Faster R-CNN 的核心贡献是提出了 **RPN，Region Proposal Network，区域候选网络**。它不再依赖 Selective Search 这类传统候选框算法，而是让神经网络自身学习“哪里可能有目标”，并且和后续检测网络共享卷积特征，从而显著提高检测效率。原论文指出，RPN 可以和 Fast R-CNN 共享整图卷积特征，使候选区域生成几乎没有额外成本，并在 VGG-16 上达到约 5 fps，同时只使用约 300 个 proposal 就能取得很好的检测效果.
 
 ## 二、Faster R-CNN 在 R-CNN 系列中的位置
 
@@ -576,40 +576,36 @@ Faster R-CNN 原论文中使用过交替训练方式，让 RPN 和 Fast R-CNN �
 
 [class_id, score, x1, y1, x2, y2]
 
-## 二十六、面试中如何介绍 Faster R-CNN？
+## 二十六、Faster R-CNN 核心总结
 
-如果面试官问：
-
-你了解 Faster R-CNN 吗？
-
-可以这样回答：
+核心说明：
 
 Faster R-CNN 是 R-CNN 系列中的经典两阶段目标检测算法。它主要由 backbone、RPN、RoI Pooling 和检测头组成。首先，backbone 对整张图像提取共享特征图；然后 RPN 在特征图上基于 anchor 预测 objectness 分数和边界框偏移量，生成一批可能包含目标的 region proposals；接着通过 RoI Pooling 或 RoI Align 将不同大小的 proposals 转换成固定尺寸特征；最后检测头对每个 proposal 进行具体类别分类和边界框回归，得到最终检测结果。
 
 Faster R-CNN 相比 Fast R-CNN 的核心改进是用 RPN 替代了 Selective Search，使候选框生成也由神经网络完成，并且 RPN 与检测网络共享卷积特征，因此检测效率和候选框质量都有明显提升。它的优点是检测精度高、定位稳定，缺点是两阶段结构相对复杂，推理速度通常不如 YOLO 这类单阶段检测器。
 
-## 二十七、如果面试官追问：RPN 是怎么工作的？
+## 二十七、延伸知识：RPN 是怎么工作的？
 
-可以回答：
+核心说明：
 
 RPN 是一个全卷积网络，它在 backbone 输出的 feature map 上滑动小窗口，并在每个位置生成多个不同尺度和长宽比的 anchor。对于每个 anchor，RPN 会预测两个东西：第一是 objectness 分数，用来判断该 anchor 是前景还是背景；第二是 bbox regression 偏移量，用来修正 anchor 的位置和大小。经过边界框解码、排序、裁剪和 NMS 后，RPN 输出一批高质量 proposals，供第二阶段检测头进一步分类和回归。
 
-## 二十八、如果面试官追问：为什么 Faster R-CNN 比 Fast R-CNN 快？
+## 二十八、延伸知识：为什么 Faster R-CNN 比 Fast R-CNN 快？
 
-可以回答：
+核心说明：
 
 Fast R-CNN 虽然共享了整张图像的 CNN 特征，但候选区域仍然依赖 Selective Search 这类传统算法，proposal 生成速度较慢，而且不能和检测网络端到端联合优化。Faster R-CNN 用 RPN 替代 Selective Search，让 proposal 生成也变成神经网络的一部分，并且 RPN 和检测头共享 backbone 特征，因此候选框生成的额外成本很低，整体检测速度更快。
 
-## 二十九、如果面试官追问：Faster R-CNN 的损失函数有哪些？
+## 二十九、延伸知识：Faster R-CNN 的损失函数有哪些？
 
-可以回答：
+核心说明：
 
 Faster R-CNN 的损失主要包括 RPN 阶段的损失和检测头阶段的损失。RPN 阶段包括 objectness 分类损失和 anchor 的边界框回归损失；检测头阶段包括 proposal 的多类别分类损失和边界框回归损失。所以整体可以看成四部分：RPN 分类损失、RPN 回归损失、检测头分类损失和检测头回归损失。
 
-## 三十、如果面试官追问：Faster R-CNN 和 YOLO 怎么选？
+## 三十、延伸知识：Faster R-CNN 和 YOLO 怎么选？
 
-可以回答：
+核心说明：
 
-如果任务更关注检测精度和定位稳定性，并且对实时性要求不是特别高，我会优先考虑 Faster R-CNN 这类两阶段检测器。它通过 RPN 先筛选候选区域，再对候选区域进行精细分类和回归，检测结果通常比较稳定。
+如果任务更关注检测精度和定位稳定性，并且对实时性要求不是特别高，可以优先考虑 Faster R-CNN 这类两阶段检测器。它通过 RPN 先筛选候选区域，再对候选区域进行精细分类和回归，检测结果通常比较稳定。
 
-如果任务要求实时推理，比如视频流检测、移动端部署、边缘设备部署，我会更倾向于 YOLO 这类单阶段检测器，因为 YOLO 直接一次前向传播输出检测结果，速度更快，部署链路也更成熟。
+如果任务要求实时推理，比如视频流检测、移动端部署、边缘设备部署，可以更倾向于 YOLO 这类单阶段检测器，因为 YOLO 直接一次前向传播输出检测结果，速度更快，部署链路也更成熟。

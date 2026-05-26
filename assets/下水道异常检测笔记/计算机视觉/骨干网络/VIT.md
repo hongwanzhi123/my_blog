@@ -396,7 +396,7 @@ CNN 的卷积通常只看局部区域。
 
 Self-Attention 的基本思想是：
 
-每个 token 根据 Query、Key、Value 去决定自己应该关注哪些 token。
+每个 token 根据 Query、Key、Value 去决定自身应该关注哪些 token。
 
 对输入 token 表示 X，会通过线性层得到：
 
@@ -410,8 +410,8 @@ Attention(Q, K, V) = Softmax(QK^T / sqrt(d)) V
 
 其中：
 
-Q：查询，表示我想找什么信息
-K：键，表示我有什么信息可被匹配
+Q：查询，表示想找什么信息
+K：键，表示有什么信息可被匹配
 V：值，表示真正要传递的信息
 
 Multi-Head 的意思是：
@@ -613,7 +613,7 @@ CNN 天然有：
 这意味着：
 
 CNN 在小数据上更容易学到合理图像特征
-ViT 需要更多数据来自己学会这些结构规律
+ViT 需要更多数据来学习这些结构规律
 
 所以原始 ViT 如果只在中等规模数据集上从零训练，效果可能不如 ResNet。
 
@@ -866,38 +866,34 @@ distillation token
 ViT：大数据预训练效果强
 DeiT：让 ViT 在较小数据上也能训练得不错
 
-## 三十一、面试中如何介绍 ViT？
+## 三十一、ViT 核心总结
 
-如果面试官问：
-
-你了解 ViT 吗？
-
-可以这样回答：
+核心说明：
 
 ViT，也就是 Vision Transformer，是一种把 Transformer 应用于图像分类的模型。它的核心思想是把输入图像划分成固定大小的 patch，每个 patch 展平成向量后经过线性映射变成 patch embedding，然后像 NLP 中的 token 一样输入 Transformer Encoder。为了保留空间位置信息，ViT 会给每个 patch token 加上 position embedding，并额外加入一个可学习的 CLS token。经过多层 Transformer Encoder 后，取 CLS token 的输出接分类头进行图像分类。
 
 ViT 和 CNN 最大的区别在于，CNN 通过卷积逐层提取局部特征并扩大感受野，而 ViT 通过 self-attention 让所有 patch token 之间直接建立关系，因此全局建模能力更强。但 ViT 的图像归纳偏置比 CNN 弱，所以通常更依赖大规模数据预训练。在分类任务上 ViT 很强，但原始 ViT 缺少层级多尺度特征，所以在检测和分割任务中通常会使用 Swin Transformer、PVT 或其他层级视觉 Transformer 变体。
 
-## 三十二、如果面试官追问：ViT 为什么要切 patch？
+## 三十二、延伸知识：ViT 为什么要切 patch？
 
-可以回答：
+核心说明：
 
 因为 Transformer 处理的是序列，而图像是二维网格结构。ViT 通过把图像切成固定大小的 patch，把每个 patch 展平并映射成一个 token，这样就可以把图像转换成 token 序列输入 Transformer。patch size 决定了 token 数量，patch 越小，保留的细节越多，但 self-attention 计算量也越大；patch 越大，计算量更小，但会损失更多局部细节。
 
-## 三十三、如果面试官追问：ViT 为什么需要位置编码？
+## 三十三、延伸知识：ViT 为什么需要位置编码？
 
-可以回答：
+核心说明：
 
 Transformer 的 self-attention 本身不包含空间顺序信息。如果只输入 patch embedding，模型不知道每个 patch 来自图像的哪个位置，也不知道 patch 之间的空间关系。图像任务非常依赖空间结构，所以 ViT 需要给每个 patch token 加上 position embedding，让模型知道不同 patch 在图像中的位置。
 
-## 三十四、如果面试官追问：ViT 和 CNN 有什么区别？
+## 三十四、延伸知识：ViT 和 CNN 有什么区别？
 
-可以回答：
+核心说明：
 
 CNN 依靠卷积操作提取局部特征，通过多层堆叠逐渐扩大感受野，具有很强的图像归纳偏置，比如局部连接和权重共享，因此在小数据场景下比较稳定。ViT 则把图像切成 patch token，用 self-attention 建模 token 之间的关系，可以直接捕获长距离依赖和全局上下文，但它的图像先验较弱，更依赖大规模预训练。简单说，CNN 更擅长局部模式建模，ViT 更擅长全局关系建模。
 
-## 三十五、如果面试官追问：ViT 为什么不如 Swin 适合检测分割？
+## 三十五、延伸知识：ViT 为什么不如 Swin 适合检测分割？
 
-可以回答：
+核心说明：
 
 原始 ViT 通常输出单尺度 token 表示，而检测和分割需要多尺度特征来处理不同大小的目标，尤其是小目标和边界细节。并且 ViT 使用全局 self-attention，输入分辨率高时计算量会随着 token 数平方增长，不适合直接处理高分辨率图像。Swin Transformer 通过窗口 attention 降低计算量，通过 patch merging 形成层级特征，所以更自然地适合检测和分割任务。

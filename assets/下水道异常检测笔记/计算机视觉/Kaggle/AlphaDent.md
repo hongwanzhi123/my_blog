@@ -1,23 +1,23 @@
 # AlphaDent: Teeth marking
 
-这是我整理 AlphaDent 牙齿标注分割任务时的项目笔记。这个任务对我来说重点不是单纯跑通 YOLO，而是把一个真实分割比赛的流程串起来：数据定位、标签检查、yaml 构建、训练、推理、后处理和提交文件生成。
+这是整理 AlphaDent 牙齿标注分割任务时的项目笔记。这个任务从任务角度看重点不是单纯跑通 YOLO，而是把一个真实分割比赛的流程串起来：数据定位、标签检查、yaml 构建、训练、推理、后处理和提交文件生成。
 
-我这版方案先追求稳定跑通，再考虑冲分。整体思路是用 YOLO segmentation 作为第一版 baseline，先把训练和提交链路打通。
+本方案先追求稳定跑通，再考虑冲分。整体思路是用 YOLO segmentation 作为第一版 baseline，先把训练和提交链路打通。
 
-## 一、我的 Kaggle 设置
+## 一、Kaggle 设置
 
-这个任务是分割任务，我在 Kaggle 右侧这样设置：
+这个任务是分割任务，在 Kaggle 右侧这样设置：
 
 Accelerator: GPU T4 x2
 Internet: On
 
-我之前遇到过 P100 和 PyTorch 版本不兼容的问题，所以这里直接选 T4 x2。
+此前遇到过 P100 和 PyTorch 版本不兼容的问题，所以这里直接选 T4 x2。
 
 这份代码默认只用第一张 T4，也就是 device=0。这样最稳定，后面如果要加速，再考虑双卡。
 
-## 二、我的完整 Notebook 代码
+## 二、完整 Notebook 代码
 
-我按 Cell 把流程拆开，方便后面单独排查每一步的问题。
+按 Cell 把流程拆开，方便后面单独排查每一步的问题。
 ```
 Cell 1：安装和导入库
 # =========================
@@ -83,7 +83,7 @@ class CFG:
     PATIENCE = 20
 
     # 单卡最稳：0
-    # 如果后面想尝试双卡，我再改成 "0,1"；第一版先用单卡保证稳定
+    # 如果后面想尝试双卡，再改成 "0,1"；第一版先用单卡保证稳定
     DEVICE = 0
 
     SEED = 42
@@ -416,7 +416,7 @@ val_metrics = best_model.val(
 
 print(val_metrics)
 
-我主要看训练输出里的这些指标：
+主要观察训练输出里的这些指标：
 
 Box Precision / Recall
 Mask Precision / Recall
@@ -684,7 +684,7 @@ plt.show()
 ```
 ## 三、这份代码的运行顺序
 
-我新建 Notebook 后，按顺序运行：
+Notebook 新建后，按顺序运行：
 
 Cell 1：安装和导入库
 Cell 2：配置参数
@@ -707,7 +707,7 @@ Cell 15：可选测试集可视化
 
 Kaggle 页面右侧 Output 里可以看到它，然后提交。
 
-## 四、我最可能遇到的问题和解决方法
+## 四、最可能遇到的问题和解决方法
 1. 显存爆了
 
 报错类似：
@@ -738,7 +738,7 @@ CFG.MODEL_NAME = "yolo11s-seg.pt"
 右侧 Notebook Settings
 Internet: On
 
-如果比赛最终提交要求关闭 Internet，我会先训练好模型，把 best.pt 保存成 Kaggle Dataset，再在最终推理 Notebook 里从 Dataset 加载权重。
+如果比赛最终提交要求关闭 Internet，可以先训练好模型，把 best.pt 保存成 Kaggle Dataset，再在最终推理 Notebook 里从 Dataset 加载权重。
 
 3. submission.csv 是空的
 
@@ -773,11 +773,11 @@ patient_id,class_id,confidence,poly
 
 如果官方 sample_submission.csv 的列名和这里不同，就以官方为准，把 Cell 13 的列名改掉。
 
-## 五、我的后续冲分计划
+## 五、后续实验计划
 
-第一版我先跑通 yolo11s-seg + imgsz=960 + conf=0.20 + iou=0.60 + TTA。
+第一版先跑通 yolo11s-seg + imgsz=960 + conf=0.20 + iou=0.60 + TTA。
 
-跑通以后我会继续做这些实验：
+跑通以后可以继续做这些实验：
 
 1. imgsz=640 vs 960
 2. conf=0.10 / 0.15 / 0.20 / 0.25 / 0.30
@@ -794,8 +794,8 @@ patient_id,class_id,confidence,poly
 推理时间
 submission.csv 大小
 
-## 六、我的项目复盘
+## 六、项目总结
 
-这次 AlphaDent 我把它当成一个完整的实例分割项目来整理。相比手写数字识别，这个任务更接近真实工程：数据路径更复杂，标签格式需要检查，模型训练会受到显存限制，最终提交还要处理 mask 多边形格式。
+这次 AlphaDent 将它当成一个完整的实例分割项目来整理。相比手写数字识别，这个任务更接近真实工程：数据路径更复杂，标签格式需要检查，模型训练会受到显存限制，最终提交还要处理 mask 多边形格式。
 
-我目前的策略是先用 yolo11s-seg 跑通 baseline，再围绕输入尺寸、置信度阈值、TTA、模型大小和 polygon 后处理做单变量实验。这样每次分数变化都能对应到一个明确改动，后续复盘也更清楚。
+当前策略是先用 yolo11s-seg 跑通 baseline，再围绕输入尺寸、置信度阈值、TTA、模型大小和 polygon 后处理做单变量实验。这样每次分数变化都能对应到一个明确改动，后续总结也更清楚。

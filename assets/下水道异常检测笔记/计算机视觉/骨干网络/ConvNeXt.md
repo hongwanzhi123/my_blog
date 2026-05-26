@@ -204,10 +204,10 @@ Depthwise Convolution 则只做空间维度上的卷积：
 
 Depthwise 7×7 Conv 是：
 
-第 1 个通道用自己的 7×7 卷积核
-第 2 个通道用自己的 7×7 卷积核
+第 1 个通道用自身的 7×7 卷积核
+第 2 个通道用自身的 7×7 卷积核
 ...
-第 96 个通道用自己的 7×7 卷积核
+第 96 个通道用自身的 7×7 卷积核
 
 它不负责通道融合。
 
@@ -391,7 +391,7 @@ CNN 特征常用 [B, C, H, W]
 LayerNorm 常在最后一维做归一化
 所以有时会转换成 [B, H, W, C]
 
-在代码里你会看到 ConvNeXt block 中经常有：
+在代码里会看到 ConvNeXt block 中经常有：
 
 x = x.permute(0, 2, 3, 1)
 LayerNorm
@@ -640,9 +640,9 @@ ConvNeXt 的核心是：
 优势	参数效率高	通用 backbone 能力强
 典型用途	分类、轻量模型	分类、检测、分割 backbone
 
-如果你想做轻量分类，EfficientNet 很合适。
+如果想做轻量分类，EfficientNet 很合适。
 
-如果你想做强 backbone，用于分类、检测、分割，ConvNeXt 很有竞争力。
+如果想做强 backbone，用于分类、检测、分割，ConvNeXt 很有竞争力。
 
 ## 二十一、ConvNeXt 在图像分类中的使用
 
@@ -664,7 +664,7 @@ Linear classifier
 
 [B, num_classes]
 
-如果你有一个 5 分类任务，可以把最后分类头改成：
+如果存在一个 5 分类任务，可以把最后分类头改成：
 
 model.classifier[-1] = nn.Linear(in_features, 5)
 
@@ -789,7 +789,7 @@ ConvNeXt 的优点主要有：
 6. 适合分类、检测、语义分割、实例分割等任务
 7. 可作为 ResNet 的强替代 backbone
 
-尤其是在你做视觉项目时，ConvNeXt 是一个非常好的升级选项：
+尤其是在做视觉项目时，ConvNeXt 是一个非常好的升级选项：
 
 ResNet baseline
 ↓
@@ -821,7 +821,7 @@ PP-LiteSeg
 
 3. 对小数据任务未必一定优于专用结构
 
-如果你的任务是医学图像小样本分割，标准 U-Net / Attention U-Net / nnU-Net 可能更直接。
+如果任务是医学图像小样本分割，标准 U-Net / Attention U-Net / nnU-Net 可能更直接。
 
 ConvNeXt 作为 encoder 可以尝试，但不一定天然最优。
 
@@ -863,13 +863,9 @@ U-Net / nnU-Net
 CLIP / SAM / GroundingDINO
 ViT / Swin / SegFormer
 
-## 三十、面试中如何介绍 ConvNeXt？
+## 三十、ConvNeXt 核心总结
 
-如果面试官问：
-
-你了解 ConvNeXt 吗？
-
-可以这样回答：
+核心说明：
 
 ConvNeXt 是一种现代化的卷积神经网络，可以看作是对 ResNet 的重新设计。它的核心思想是吸收 Vision Transformer 和 Swin Transformer 中有效的架构设计，但仍然保持纯卷积结构。ConvNeXt 从 ResNet 出发，逐步引入 patchify stem、层级 stage 设计、depthwise convolution、大卷积核、LayerNorm、GELU、inverted bottleneck、Layer Scale 和 DropPath 等现代设计，使 CNN 在分类、检测和分割任务中重新达到非常强的性能。
 
@@ -877,26 +873,26 @@ ConvNeXt 的基本 block 通常由 7×7 depthwise convolution、LayerNorm、两�
 
 它的优势是保留了 CNN 的局部归纳偏置和工程部署友好性，同时具备接近 Transformer 的精度和可扩展性，因此常被用作图像分类、目标检测和语义分割任务中的强 backbone。
 
-## 三十一、如果面试官追问：ConvNeXt 和 ResNet 有什么区别？
+## 三十一、延伸知识：ConvNeXt 和 ResNet 有什么区别？
 
-可以回答：
+核心说明：
 
 ResNet 是经典残差 CNN，主要由 3×3 卷积、BatchNorm、ReLU 和残差连接组成；ConvNeXt 则是在 ResNet 基础上吸收了 Transformer 时代的一些设计。比如它用 4×4 stride=4 的 patchify stem 替代 ResNet 的 7×7 卷积加 MaxPool；用 7×7 depthwise convolution 扩大感受野；用 LayerNorm 替代 BatchNorm；用 GELU 替代 ReLU；并采用类似 Transformer FFN 的 inverted bottleneck 结构。整体来说，ConvNeXt 还是 CNN，但它的设计风格更现代，性能通常强于传统 ResNet。
 
-## 三十二、如果面试官追问：ConvNeXt 为什么用 Depthwise Conv？
+## 三十二、延伸知识：ConvNeXt 为什么用 Depthwise Conv？
 
-可以回答：
+核心说明：
 
 Depthwise convolution 可以把空间特征提取和通道融合解耦。ConvNeXt 使用 7×7 depthwise convolution 来做空间信息混合，这样可以扩大感受野，但计算量不会像普通 7×7 卷积那样大。随后再用 1×1 convolution 做通道融合和通道扩展。这种设计既保留了卷积的局部建模能力，又能以较低成本获得更大的空间感受野。
 
-## 三十三、如果面试官追问：ConvNeXt 为什么说是 CNN 版 Transformer？
+## 三十三、延伸知识：ConvNeXt 为什么说是 CNN 版 Transformer？
 
-可以回答：
+核心说明：
 
 因为 ConvNeXt 的 block 结构和 Transformer block 很像。Transformer block 通常是 token mixing，也就是 self-attention，加上 LayerNorm 和 MLP；ConvNeXt 则用 depthwise convolution 做空间 mixing，用 1×1 convolution 构成 MLP-like 通道变换，并同样使用 LayerNorm、GELU、残差连接和 DropPath。所以它在整体设计习惯上接近 Transformer，但核心空间建模操作仍然是卷积，而不是 self-attention。
 
-## 三十四、如果面试官追问：ConvNeXt V2 改进了什么？
+## 三十四、延伸知识：ConvNeXt V2 改进了什么？
 
-可以回答：
+核心说明：
 
 ConvNeXt V2 主要面向自监督预训练场景进行改进。原始 ConvNeXt 是在有监督训练下设计的，如果直接和 masked autoencoder 结合，效果并不理想。ConvNeXt V2 提出了 Fully Convolutional Masked Autoencoder，也就是 FCMAE，并加入 Global Response Normalization，简称 GRN，用来增强通道之间的特征竞争和全局响应建模。这样可以让 ConvNeXt 更好地适配 MAE 式自监督预训练，并提升分类、检测和分割等下游任务表现。

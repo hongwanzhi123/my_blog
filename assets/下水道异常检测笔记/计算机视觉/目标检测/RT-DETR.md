@@ -524,7 +524,7 @@ batch size
     不重新训练也能调节速度和精度
 ## 二十二、如果做项目，什么时候选 RT-DETR？
 
-你可以这样选择：
+可以这样选择：
 
 适合 RT-DETR 的场景
 1. 希望使用端到端目标检测
@@ -532,7 +532,7 @@ batch size
 3. 目标检测需要较强全局上下文理解
 4. 服务端 GPU 或边缘 GPU 有较好推理环境
 5. 想做比 YOLO 更有研究感的检测项目
-6. 简历/论文项目中想体现 Transformer 检测器能力
+6. 资料/论文项目中想体现 Transformer 检测器能力
 
 例如：
 
@@ -549,13 +549,13 @@ batch size
 4. 生态稳定性优先
 5. 模型导出链路要求极其成熟
 
-如果你是为了找工作做项目，可以这样设计对比实验：
+如果是为了找工作做项目，可以这样设计对比实验：
 
 YOLOv8 / YOLO11 作为实时 CNN 检测 baseline
 Faster R-CNN 作为两阶段高精度 baseline
 RT-DETR 作为端到端 Transformer 检测 baseline
 
-这样面试中比较好讲：
+这样知识总结中比较好讲：
 
 YOLO：速度优势
 Faster R-CNN：两阶段高精度
@@ -563,7 +563,7 @@ RT-DETR：端到端、免 NMS、Transformer 全局建模
 
 ## 二十三、RT-DETR 训练项目流程
 
-如果你要训练 RT-DETR，整体流程和目标检测项目类似：
+如果需要训练 RT-DETR，整体流程和目标检测项目类似：
 
 1. 明确检测类别
 2. 收集图像数据
@@ -597,13 +597,9 @@ batch=1 FPS
 TensorRT FP16 是否支持良好
 输入尺寸变化后的速度
 
-## 二十四、RT-DETR 面试回答版本
+## 二十四、RT-DETR 核心总结
 
-如果面试官问：
-
-你了解 RT-DETR 吗？
-
-可以这样回答：
+核心说明：
 
 RT-DETR 是一种面向实时目标检测的 Detection Transformer 模型，全称是 Real-Time Detection Transformer。它继承了 DETR 端到端集合预测的思想，通过 object query 和 Hungarian Matching 直接预测目标集合，因此推理时通常不需要 NMS。
 
@@ -611,22 +607,22 @@ RT-DETR 是一种面向实时目标检测的 Detection Transformer 模型，全�
 
 相比 YOLO，RT-DETR 的优势是端到端、anchor-free、NMS-free，并且具备 Transformer 的全局建模能力；相比 Faster R-CNN，它不需要 RPN 和 RoI Head 两阶段流程，推理链路更简洁。它适合对实时性有要求，同时又希望使用端到端 Transformer 检测器的场景。
 
-## 二十五、如果面试官追问：RT-DETR 为什么能实时？
+## 二十五、延伸知识：RT-DETR 为什么能实时？
 
-可以回答：
+核心说明：
 
 RT-DETR 能实时，关键在于它没有直接使用高成本的原始 Transformer encoder 去处理所有多尺度图像 token，而是设计了高效混合编码器。它将同一尺度内部的特征交互和不同尺度之间的特征融合分开处理，在需要全局建模的部分使用 attention，在跨尺度融合部分使用更轻量的 CNN 类结构，从而减少计算量。另外，它通过高质量 query selection 减轻 decoder 的优化难度，并且支持通过减少 decoder 层数来调节推理速度，所以相比传统 DETR 更适合实时检测。
 
-## 二十六、如果面试官追问：RT-DETR 为什么不需要 NMS？
+## 二十六、延伸知识：RT-DETR 为什么不需要 NMS？
 
-可以回答：
+核心说明：
 
 因为 RT-DETR 继承了 DETR 的集合预测思想。训练时，它通过 Hungarian Matching 将固定数量的预测和真实框做一对一匹配，每个真实目标只由一个 query 负责预测，未匹配的 query 学习 no object。这样模型被训练成直接输出一组不重复的目标集合，而不是像 YOLO 那样在密集位置产生大量候选框。因此推理时通常只需要根据分数筛选结果，不需要 NMS 去重。
 
-## 二十七、如果面试官追问：RT-DETR 和 YOLO 怎么选？
+## 二十七、延伸知识：RT-DETR 和 YOLO 怎么选？
 
-可以回答：
+核心说明：
 
-如果项目更重视部署成熟度、移动端推理、低算力设备和快速工程落地，我会优先选择 YOLO，因为 YOLO 的生态和部署链路更成熟。如果项目希望体现端到端检测、避免 NMS 后处理，或者需要 Transformer 的全局建模能力，我会考虑 RT-DETR。
+如果项目更重视部署成熟度、移动端推理、低算力设备和快速工程落地，可以优先选择 YOLO，因为 YOLO 的生态和部署链路更成熟。如果项目希望体现端到端检测、避免 NMS 后处理，或者需要 Transformer 的全局建模能力，可以考虑 RT-DETR。
 
 简单说，YOLO 更像是工程部署优先的实时检测器，RT-DETR 更像是把 DETR 的端到端思想推进到实时检测场景中的方法。在服务器 GPU 或 TensorRT 支持较好的场景下，RT-DETR 是一个很有竞争力的选择。
