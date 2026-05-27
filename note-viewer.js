@@ -153,7 +153,9 @@ async function main() {
   }
 
   try {
-    const response = await fetch(file);
+    const fetchUrl = new URL(file, window.location.href);
+    fetchUrl.searchParams.set("v", Date.now().toString());
+    const response = await fetch(fetchUrl, { cache: "no-store" });
     if (!response.ok) {
       throw new Error("HTTP " + response.status);
     }
