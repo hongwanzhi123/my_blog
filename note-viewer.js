@@ -7,16 +7,50 @@ function escapeHtml(text) {
     .replace(/'/g, "&#39;");
 }
 
-function renderInline(text) {
-  let html = escapeHtml(text);
-  html = html.replace(/`([^`]+)`/g, "<code>$1</code>");
+function resolveSafeUrl(value, baseUrl, imageOnly = false) {
+  try {
+    const url = new URL(value, baseUrl);
+    const allowedProtocols = imageOnly ? ["http:", "https:"] : ["http:", "https:", "mailto:"];
+    return allowedProtocols.includes(url.protocol) ? url.href : "#";
+  } catch (_error) {
+    return "#";
+  }
+}
+
+function renderInline(text, sourceUrl) {
+  const tokens = [];
+  const saveToken = (html) => {
+    const token = `@@MDTOKEN${tokens.length}@@`;
+    tokens.push(html);
+    return token;
+  };
+
+  let prepared = text.replace(/`([^`]+)`/g, (_match, code) =>
+    saveToken(`<code>${escapeHtml(code)}</code>`)
+  );
+
+  prepared = prepared.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (_match, alt, source) => {
+    const url = resolveSafeUrl(source.trim(), sourceUrl, true);
+    if (url === "#") return saveToken(escapeHtml(_match));
+    return saveToken(`<img src="${escapeHtml(url)}" alt="${escapeHtml(alt)}" loading="lazy">`);
+  });
+
+  prepared = prepared.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_match, label, target) => {
+    const url = resolveSafeUrl(target.trim(), sourceUrl);
+    if (url === "#") return saveToken(escapeHtml(label));
+    const isExternal = new URL(url).origin !== window.location.origin;
+    const externalAttrs = isExternal ? ' target="_blank" rel="noopener noreferrer"' : "";
+    return saveToken(`<a href="${escapeHtml(url)}"${externalAttrs}>${escapeHtml(label)}</a>`);
+  });
+
+  let html = escapeHtml(prepared);
   html = html.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
   html = html.replace(/\*([^*]+)\*/g, "<em>$1</em>");
-  html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+  html = html.replace(/@@MDTOKEN(\d+)@@/g, (_match, index) => tokens[Number(index)]);
   return html;
 }
 
-function renderMarkdown(markdown) {
+function renderMarkdown(markdown, sourceUrl) {
   const lines = markdown.replace(/\r\n/g, "\n").split("\n");
   const html = [];
   let inCodeBlock = false;
@@ -26,7 +60,7 @@ function renderMarkdown(markdown) {
 
   function flushParagraph() {
     if (paragraph.length) {
-      html.push("<p>" + renderInline(paragraph.join(" ")) + "</p>");
+      html.push("<p>" + renderInline(paragraph.join(" "), sourceUrl) + "</p>");
       paragraph = [];
     }
   }
@@ -74,7 +108,7 @@ function renderMarkdown(markdown) {
       flushParagraph();
       flushList();
       const level = heading[1].length;
-      html.push(`<h${level}>${renderInline(heading[2])}</h${level}>`);
+      html.push(`<h${level}>${renderInline(heading[2], sourceUrl)}</h${level}>`);
       continue;
     }
 
@@ -89,7 +123,7 @@ function renderMarkdown(markdown) {
     if (blockquote) {
       flushParagraph();
       flushList();
-      html.push(`<blockquote>${renderInline(blockquote[1])}</blockquote>`);
+      html.push(`<blockquote>${renderInline(blockquote[1], sourceUrl)}</blockquote>`);
       continue;
     }
 
@@ -101,7 +135,7 @@ function renderMarkdown(markdown) {
         listType = "ul";
         html.push("<ul>");
       }
-      html.push(`<li>${renderInline(unordered[1])}</li>`);
+      html.push(`<li>${renderInline(unordered[1], sourceUrl)}</li>`);
       continue;
     }
 
@@ -113,7 +147,7 @@ function renderMarkdown(markdown) {
         listType = "ol";
         html.push("<ol>");
       }
-      html.push(`<li>${renderInline(ordered[1])}</li>`);
+      html.push(`<li>${renderInline(ordered[1], sourceUrl)}</li>`);
       continue;
     }
 
@@ -161,7 +195,7 @@ async function main() {
     }
 
     const markdown = await response.text();
-    contentNode.innerHTML = renderMarkdown(markdown);
+    contentNode.innerHTML = renderMarkdown(markdown, fetchUrl);
   } catch (error) {
     contentNode.innerHTML =
       '<p class="error-message">内容暂时无法加载。</p>';
