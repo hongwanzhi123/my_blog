@@ -3,323 +3,246 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Hong Wanzhi 的个人研究与学习主页，聚焦计算机视觉、视频质量评价、深度学习与算法设计。">
-  <meta name="theme-color" content="#060b16">
-  <title>Hong Wanzhi | Computer Vision &amp; AI</title>
+  <meta name="description" content="Hong Wanzhi 的个人作品集，记录计算机视觉、算法设计、大模型学习、项目实践与个人兴趣。">
+  <meta name="theme-color" content="#050914">
+  <title>Hong Wanzhi | AI &amp; Computer Vision</title>
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
+  <div class="page-grid" aria-hidden="true"></div>
+
   <nav class="navbar" aria-label="主导航">
     <div class="navbar-inner container">
-      <a class="navbar-brand gradient-text" href="#home" aria-label="返回首页">[HWZ] // LAB</a>
+      <a class="navbar-brand" href="#home"><span>[HWZ]</span> // PORTFOLIO</a>
       <div class="navbar-links">
-        <a class="navbar-link" href="#home">01 / 首页</a>
-        <a class="navbar-link" href="#research">02 / 研究</a>
-        <a class="navbar-link" href="#projects">03 / 项目</a>
-        <a class="navbar-link" href="#notes">04 / 笔记</a>
-        <a class="navbar-link" href="https://github.com/hongwanzhi123" target="_blank" rel="noreferrer">05 / GITHUB ↗</a>
+        <a href="#experience">01 项目经验</a>
+        <a href="#sharing">02 知识分享</a>
+        <a href="#hobbies">03 兴趣爱好</a>
+        <a href="#resume">04 个人简历</a>
+        <a class="nav-github" href="https://github.com/hongwanzhi123" target="_blank" rel="noreferrer">GITHUB ↗</a>
       </div>
     </div>
   </nav>
 
   <main>
-    <header id="home" class="hero">
-      <div class="hero-orb hero-orb-pink"></div>
-      <div class="hero-orb hero-orb-purple"></div>
-      <div class="hero-orb hero-orb-mint"></div>
-      <p class="hero-kicker reveal">&gt; INITIALIZING PROFILE...</p>
-      <h1 class="hero-name gradient-text reveal delay-1">Hong Wanzhi</h1>
-      <p class="hero-subtitle reveal delay-2">COMPUTER VISION // VIDEO QUALITY // DEEP LEARNING</p>
-      <p class="hero-bio reveal delay-3">
-        我专注于计算机视觉与视频质量评价，持续探索目标检测、视觉模型和 AI 工程落地。
-        这里记录我的研究思考、项目实践与算法笔记，也见证每一次从论文理解到代码复现的过程。
-      </p>
-      <div class="hero-tags reveal delay-4" aria-label="研究关键词">
-        <span class="badge">Video Quality Assessment</span>
-        <span class="badge">Object Detection</span>
-        <span class="badge">Vision Models</span>
-        <span class="badge">Model Deployment</span>
+    <header id="home" class="hero container">
+      <div class="hero-copy">
+        <p class="terminal-line"><span>portfolio@hwz:~$</span> whoami</p>
+        <h1>Hong<br><span>Wanzhi</span></h1>
+        <p class="hero-role">COMPUTER VISION · AI RESEARCH · ENGINEERING</p>
+        <p class="hero-bio">关注计算机视觉、视频质量评价与深度学习，把论文中的想法变成可复现的实验，也把模型做成真正能够运行的系统。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#experience">查看项目 <span>↘</span></a>
+          <a class="btn btn-ghost" href="#resume">个人简历</a>
+        </div>
       </div>
-      <div class="hero-actions reveal delay-4">
-        <a class="btn btn-primary" href="#projects">查看项目 <span aria-hidden="true">→</span></a>
-        <a class="btn btn-secondary" href="#notes">浏览笔记</a>
-      </div>
+
+      <aside class="hero-panel" aria-label="个人方向概览">
+        <div class="panel-head"><span>PROFILE.SYS</span><span class="signal">ONLINE</span></div>
+        <div class="code-block">
+          <p><span class="code-key">name</span>: <span class="code-value">"Hong Wanzhi"</span></p>
+          <p><span class="code-key">focus</span>: [</p>
+          <p class="indent"><span class="code-value">"Computer Vision"</span>,</p>
+          <p class="indent"><span class="code-value">"Video Quality"</span>,</p>
+          <p class="indent"><span class="code-value">"Deep Learning"</span></p>
+          <p>]</p>
+          <p><span class="code-key">status</span>: <span class="code-ok">"KEEP_BUILDING"</span></p>
+        </div>
+        <div class="panel-metrics">
+          <div><strong>CV</strong><span>核心方向</span></div>
+          <div><strong>AI</strong><span>持续探索</span></div>
+          <div><strong>∞</strong><span>终身学习</span></div>
+        </div>
+      </aside>
     </header>
 
-    <section class="quick-links container" aria-label="内容导航">
-      <a class="quick-card" href="#projects">
-        <span class="quick-icon">01</span>
-        <strong>项目实践</strong>
-        <small>从实验到落地</small>
-      </a>
-      <a class="quick-card" href="#algorithm">
-        <span class="quick-icon">02</span>
-        <strong>算法设计</strong>
-        <small>方法与题型总结</small>
-      </a>
-      <a class="quick-card" href="#vision">
-        <span class="quick-icon">03</span>
-        <strong>计算机视觉</strong>
-        <small>模型与论文笔记</small>
-      </a>
-      <a class="quick-card" href="#engineering">
-        <span class="quick-icon">04</span>
-        <strong>工程部署</strong>
-        <small>训练、推理与优化</small>
-      </a>
+    <section class="portal container" aria-label="四个主要板块">
+      <a href="#experience"><span>01</span><strong>项目经验</strong><small>PROJECTS</small></a>
+      <a href="#sharing"><span>02</span><strong>知识分享</strong><small>KNOWLEDGE</small></a>
+      <a href="#hobbies"><span>03</span><strong>兴趣爱好</strong><small>INTERESTS</small></a>
+      <a href="#resume"><span>04</span><strong>个人简历</strong><small>RESUME</small></a>
     </section>
 
-    <section id="research" class="section container">
+    <section id="experience" class="section container">
       <div class="section-header">
-        <p class="section-eyebrow">What I care about</p>
-        <h2>Research <span class="gradient-text">Focus_</span></h2>
-        <p>把研究问题拆解清楚，也把模型真正运行起来。</p>
+        <div><p class="eyebrow">01 / SELECTED WORK</p><h2>项目经验<span>_</span></h2></div>
+        <p>从真实任务出发，记录研究、竞赛与工程实践中的问题拆解、模型设计和结果复盘。</p>
       </div>
-      <div class="research-grid">
-        <article class="card research-card">
-          <span class="card-icon">01</span>
-          <h3>视频质量评价</h3>
-          <p>围绕真实场景视频的主观质量预测，关注时空表征、显著性先验与大模型知识融合。</p>
-          <div class="mini-tags"><span>VQA</span><span>KVQ</span><span>Saliency</span></div>
-        </article>
-        <article class="card research-card">
-          <span class="card-icon">02</span>
-          <h3>目标检测</h3>
-          <p>梳理 CNN 与 Transformer 检测范式，在工业缺陷等真实任务中平衡精度、速度与鲁棒性。</p>
-          <div class="mini-tags"><span>YOLO</span><span>DETR</span><span>RT-DETR</span></div>
-        </article>
-        <article class="card research-card">
-          <span class="card-icon">03</span>
-          <h3>视觉模型</h3>
-          <p>从骨干网络、图像分割到视觉语言模型，建立可迁移的模型理解与实验分析框架。</p>
-          <div class="mini-tags"><span>ViT</span><span>Swin</span><span>VLM</span></div>
-        </article>
-        <article class="card research-card">
-          <span class="card-icon">04</span>
-          <h3>AI 工程化</h3>
-          <p>连接数据、训练、评估和部署环节，记录 ONNX、Docker 与推理优化中的实战经验。</p>
-          <div class="mini-tags"><span>ONNX</span><span>Docker</span><span>Pipeline</span></div>
+
+      <div class="project-category">
+        <div class="category-title"><span>01.1</span><div><h3>实习项目</h3><p>INTERNSHIP PROJECTS</p></div></div>
+        <div class="project-grid two-columns">
+          <article class="project-card featured">
+            <div class="project-meta"><span>INDUSTRIAL VISION</span><span>实践项目</span></div>
+            <h4>智能制造生产线视觉项目</h4>
+            <p>围绕工业生产线场景，完成数据理解、视觉模型构建、训练评估和结果分析，关注模型在真实业务环境中的可用性。</p>
+            <div class="tag-list"><span>Computer Vision</span><span>PyTorch</span><span>Industrial AI</span></div>
+            <a class="card-link" href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/Kaggle/%E6%99%BA%E8%83%BD%E5%88%B6%E9%80%A0%E7%94%9F%E4%BA%A7%E7%BA%BF%E9%A1%B9%E7%9B%AE.md&amp;title=%E6%99%BA%E8%83%BD%E5%88%B6%E9%80%A0%E7%94%9F%E4%BA%A7%E7%BA%BF%E9%A1%B9%E7%9B%AE">查看项目笔记 ↗</a>
+          </article>
+          <article class="project-card">
+            <div class="project-meta"><span>DEPLOYMENT</span><span>工程实践</span></div>
+            <h4>视觉模型训练与部署</h4>
+            <p>整理目标检测模型从训练配置、效果评估，到 ONNX 导出、运行时推理和容器化部署的完整工作流。</p>
+            <div class="tag-list"><span>YOLO</span><span>ONNX</span><span>Docker</span></div>
+            <a class="card-link" href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/Yolo.md&amp;title=YOLO%20%E8%AE%AD%E7%BB%83%E4%B8%8E%E5%BA%94%E7%94%A8">查看训练流程 ↗</a>
+          </article>
+        </div>
+      </div>
+
+      <div class="project-category">
+        <div class="category-title"><span>01.2</span><div><h3>科研项目</h3><p>RESEARCH PROJECTS</p></div></div>
+        <div class="project-grid two-columns">
+          <article class="project-card featured">
+            <div class="project-meta"><span>VIDEO QUALITY</span><span class="status-live">研究中</span></div>
+            <h4>KVQ 视频质量评价研究</h4>
+            <p>探索真实场景视频的主观质量预测，关注时空特征、显著性先验、大模型知识融合与有界残差校准。</p>
+            <ul class="project-points"><li>关键窗口选择与特征融合</li><li>消融实验和多指标复盘</li><li>可视化与误差分析</li></ul>
+            <a class="card-link" href="./note-viewer.html?file=assets/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93.md&amp;title=KVQ%20%E8%A7%86%E9%A2%91%E8%B4%A8%E9%87%8F%E8%AF%84%E4%BB%B7">查看研究笔记 ↗</a>
+          </article>
+          <article class="project-card">
+            <div class="project-meta"><span>MULTI-LABEL</span><span>科研实践</span></div>
+            <h4>下水道多标签异常检测</h4>
+            <p>面向复杂地下管网缺陷识别，梳理检测与多标签分类方法，并持续复盘训练指标、类别不均衡和模型优化策略。</p>
+            <ul class="project-points"><li>真实缺陷场景建模</li><li>局部与全局特征协同</li><li>训练曲线与指标分析</li></ul>
+            <a class="card-link" href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.md&amp;title=%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B">查看项目笔记 ↗</a>
+          </article>
+        </div>
+      </div>
+
+      <div class="project-category">
+        <div class="category-title"><span>01.3</span><div><h3>Kaggle 项目</h3><p>COMPETITION PROJECTS</p></div></div>
+        <div class="kaggle-grid">
+          <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/Kaggle/%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB.md&amp;title=%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB"><span>K01</span><strong>手写数字识别</strong><small>IMAGE CLASSIFICATION ↗</small></a>
+          <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/Kaggle/%E6%B3%B0%E5%9D%A6%E5%B0%BC%E5%85%8B%E5%8F%B7.md&amp;title=%E6%B3%B0%E5%9D%A6%E5%B0%BC%E5%85%8B%E5%8F%B7"><span>K02</span><strong>泰坦尼克号</strong><small>TABULAR MODELING ↗</small></a>
+          <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/Kaggle/AlphaDent.md&amp;title=AlphaDent"><span>K03</span><strong>AlphaDent</strong><small>VISION CHALLENGE ↗</small></a>
+          <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/Kaggle/Facial_Keypoints_Detection.md&amp;title=%E4%BA%BA%E8%84%B8%E5%85%B3%E9%94%AE%E7%82%B9%E6%A3%80%E6%B5%8B"><span>K04</span><strong>人脸关键点检测</strong><small>KEYPOINT REGRESSION ↗</small></a>
+          <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/Kaggle/%E5%9B%BE%E5%83%8F%E5%8E%BB%E9%98%B4%E5%BD%B1.md&amp;title=%E5%9B%BE%E5%83%8F%E5%8E%BB%E9%98%B4%E5%BD%B1"><span>K05</span><strong>图像去阴影</strong><small>LOW-LEVEL VISION ↗</small></a>
+        </div>
+      </div>
+
+      <div class="project-category">
+        <div class="category-title"><span>01.4</span><div><h3>游戏项目</h3><p>GAME PROJECTS</p></div></div>
+        <article class="game-placeholder">
+          <div class="game-prompt"><span>&gt;</span><span class="cursor"></span></div>
+          <div><p class="eyebrow">BUILDING NEXT</p><h4>个人游戏与交互实验</h4><p>正在整理游戏开发与交互设计方向的实践，后续将补充可试玩 Demo、开发过程和源码。</p></div>
+          <span class="coming-soon">COMING SOON</span>
         </article>
       </div>
     </section>
 
-    <section id="projects" class="section section-tint">
+    <section id="sharing" class="section section-dark">
       <div class="container">
         <div class="section-header">
-          <p class="section-eyebrow">Selected work</p>
-          <h2>Featured <span class="gradient-text">Projects_</span></h2>
-          <p>持续沉淀的研究实验、场景项目与工程实践。</p>
+          <div><p class="eyebrow">02 / KNOWLEDGE BASE</p><h2>知识分享<span>_</span></h2></div>
+          <p>用自己的语言重新组织知识：讲清问题、理解方法，也保留可以复用的代码与实验经验。</p>
         </div>
-        <div class="project-grid">
-          <article class="project-card featured-project">
-            <div class="project-topline">
-              <span class="project-icon">A1</span>
-              <span class="status status-research">研究进行中</span>
-            </div>
-            <h3>KVQ 视频质量评价研究</h3>
-            <p>探索大模型显著性先验、关键窗口选择与有界残差校准，提升真实视频质量预测的相关性与稳定性。</p>
-            <ul class="project-points">
-              <li>显著性先验生成与特征融合</li>
-              <li>关键窗口实验与指标复盘</li>
-              <li>多组消融实验与可视化分析</li>
-            </ul>
-            <div class="project-footer">
-              <div class="mini-tags"><span>PyTorch</span><span>VQA</span><span>LLM Prior</span></div>
-              <a class="text-link" href="./note-viewer.html?file=assets/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93.md&amp;title=%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93">研究笔记 →</a>
+
+        <div class="knowledge-grid">
+          <article class="knowledge-card">
+            <div class="knowledge-number">ALG / 01</div>
+            <h3>算法分析与设计</h3>
+            <p>从问题特征出发选择解法，理解时间与空间复杂度，并沉淀可迁移的建模思路。</p>
+            <div class="knowledge-links">
+              <a href="./note-viewer.html?file=%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92.md&amp;title=%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92">动态规划</a>
+              <a href="./note-viewer.html?file=%E5%9B%9E%E6%BA%AF.md&amp;title=%E5%9B%9E%E6%BA%AF">回溯</a>
+              <a href="./note-viewer.html?file=%E5%9B%BE%E8%AE%BA%EF%BC%88%E6%90%9C%E7%B4%A2%EF%BC%89.md&amp;title=%E5%9B%BE%E8%AE%BA%E4%B8%8E%E6%90%9C%E7%B4%A2">图论与搜索</a>
+              <a href="./note-viewer.html?file=%E5%88%86%E6%B2%BB.md&amp;title=%E5%88%86%E6%B2%BB">分治</a>
+              <a href="./note-viewer.html?file=%E6%9E%9A%E4%B8%BE.md&amp;title=%E6%9E%9A%E4%B8%BE">枚举</a>
+              <a href="./note-viewer.html?file=%E4%BA%8C%E5%8F%89%E6%A0%91.md&amp;title=%E4%BA%8C%E5%8F%89%E6%A0%91">二叉树</a>
             </div>
           </article>
 
-          <article class="project-card">
-            <div class="project-topline">
-              <span class="project-icon">B2</span>
-              <span class="status status-complete">实践项目</span>
-            </div>
-            <h3>下水道异常检测</h3>
-            <p>面向复杂地下管网场景的缺陷识别任务，涵盖问题定义、模型选型、多标签学习与实验复盘。</p>
-            <ul class="project-points">
-              <li>真实缺陷场景建模</li>
-              <li>检测与多标签分类方法对比</li>
-              <li>训练指标分析与优化</li>
-            </ul>
-            <div class="project-footer">
-              <div class="mini-tags"><span>Detection</span><span>Multi-label</span></div>
-              <a class="text-link" href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.md&amp;title=%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B">项目笔记 →</a>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <div class="project-topline">
-              <span class="project-icon">C3</span>
-              <span class="status status-learning">工程实践</span>
-            </div>
-            <h3>YOLO 模型训练与部署</h3>
-            <p>整理从数据准备、训练评估到模型导出与部署的完整工作流，让实验结果能够走向真实应用。</p>
-            <ul class="project-points">
-              <li>训练配置与结果分析</li>
-              <li>ONNX 推理链路</li>
-              <li>部署问题排查与性能优化</li>
-            </ul>
-            <div class="project-footer">
-              <div class="mini-tags"><span>YOLO</span><span>ONNX</span></div>
-              <a class="text-link" href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/Yolo.md&amp;title=YOLO%20%E8%AE%AD%E7%BB%83%E4%B8%8E%E5%BA%94%E7%94%A8">查看流程 →</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="notes" class="section container">
-      <div class="section-header">
-        <p class="section-eyebrow">Knowledge garden</p>
-        <h2>Notes &amp; <span class="gradient-text">Learning_</span></h2>
-        <p>不是资料堆积，而是持续生长的个人知识地图。</p>
-      </div>
-
-      <div id="algorithm" class="note-group">
-        <div class="note-group-heading">
-          <span class="note-group-icon">ALG</span>
-          <div><h3>算法设计</h3><p>从问题特征出发，整理可复用的建模与求解方法。</p></div>
-        </div>
-        <div class="note-links">
-          <a href="./note-viewer.html?file=%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92.md&amp;title=%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92&amp;pdf=%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92.pdf"><span>动态规划</span><small>状态与转移</small></a>
-          <a href="./note-viewer.html?file=%E5%9B%9E%E6%BA%AF.md&amp;title=%E5%9B%9E%E6%BA%AF"><span>回溯</span><small>搜索与剪枝</small></a>
-          <a href="./note-viewer.html?file=%E5%9B%BE%E8%AE%BA%EF%BC%88%E6%90%9C%E7%B4%A2%EF%BC%89.md&amp;title=%E5%9B%BE%E8%AE%BA%EF%BC%88%E6%90%9C%E7%B4%A2%EF%BC%89"><span>图论搜索</span><small>DFS 与 BFS</small></a>
-          <a href="./note-viewer.html?file=%E5%88%86%E6%B2%BB.md&amp;title=%E5%88%86%E6%B2%BB"><span>分治</span><small>拆分与合并</small></a>
-          <a href="./note-viewer.html?file=%E6%9E%9A%E4%B8%BE.md&amp;title=%E6%9E%9A%E4%B8%BE"><span>枚举</span><small>状态与优化</small></a>
-          <a href="./note-viewer.html?file=%E4%BA%8C%E5%8F%89%E6%A0%91.md&amp;title=%E4%BA%8C%E5%8F%89%E6%A0%91"><span>二叉树</span><small>遍历与递归</small></a>
-          <a href="./note-viewer.html?file=%E9%93%BE%E8%A1%A8.md&amp;title=%E9%93%BE%E8%A1%A8&amp;pdf=%E9%93%BE%E8%A1%A8.pdf"><span>链表</span><small>结构与边界</small></a>
-        </div>
-      </div>
-
-      <div id="vision" class="note-group">
-        <div class="note-group-heading">
-          <span class="note-group-icon">CV</span>
-          <div><h3>计算机视觉</h3><p>从基础模型到前沿方法，建立完整的视觉算法脉络。</p></div>
-        </div>
-        <div class="topic-grid">
-          <article class="topic-card">
-            <span class="topic-label">基础</span>
-            <h4>深度学习基础</h4>
-            <div class="chip-list">
+          <article class="knowledge-card knowledge-featured">
+            <div class="knowledge-number">CV / 02</div>
+            <h3>计算机视觉</h3>
+            <p>从卷积网络、Transformer 骨干，到目标检测、图像分割和视觉模型部署。</p>
+            <div class="knowledge-links">
               <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C.md&amp;title=%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C">CNN</a>
               <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/Transformer.md&amp;title=Transformer">Transformer</a>
-              <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/OpenCV.md&amp;title=OpenCV">OpenCV</a>
-            </div>
-          </article>
-          <article class="topic-card">
-            <span class="topic-label lavender">Backbone</span>
-            <h4>骨干网络</h4>
-            <div class="chip-list">
               <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E9%AA%A8%E5%B9%B2%E7%BD%91%E7%BB%9C/ResNet.md&amp;title=ResNet">ResNet</a>
               <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E9%AA%A8%E5%B9%B2%E7%BD%91%E7%BB%9C/ConvNeXt.md&amp;title=ConvNeXt">ConvNeXt</a>
-              <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E9%AA%A8%E5%B9%B2%E7%BD%91%E7%BB%9C/VIT.md&amp;title=ViT">ViT</a>
-              <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E9%AA%A8%E5%B9%B2%E7%BD%91%E7%BB%9C/SwinTransformer.md&amp;title=Swin%20Transformer">Swin</a>
-            </div>
-          </article>
-          <article class="topic-card">
-            <span class="topic-label coral">Detection</span>
-            <h4>目标检测</h4>
-            <div class="chip-list">
-              <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/FasterR-CNN.md&amp;title=Faster%20R-CNN">Faster R-CNN</a>
               <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/DETR.md&amp;title=DETR">DETR</a>
-              <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/RT-DETR.md&amp;title=RT-DETR">RT-DETR</a>
               <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/Yolo.md&amp;title=YOLO">YOLO</a>
             </div>
           </article>
-          <article class="topic-card">
-            <span class="topic-label mint">Segmentation</span>
-            <h4>图像分割</h4>
-            <div class="chip-list">
-              <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2/UNet.md&amp;title=U-Net">U-Net</a>
-              <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2/DeepLab.md&amp;title=DeepLab">DeepLab</a>
-              <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2/Bisenet.md&amp;title=Bisenet">Bisenet</a>
-              <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2/MaskR-CNN.md&amp;title=Mask%20R-CNN">Mask R-CNN</a>
-              <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2/Mask2Former.md&amp;title=Mask2Former">Mask2Former</a>
-              <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2/SAM.md&amp;title=SAM">SAM</a>
-            </div>
-          </article>
-          <article class="topic-card">
-            <span class="topic-label peach">Frontier</span>
-            <h4>前沿模型</h4>
-            <div class="chip-list">
+
+          <article class="knowledge-card">
+            <div class="knowledge-number">LLM / 03</div>
+            <h3>大模型</h3>
+            <p>关注大模型与视觉任务的结合方式，包括视觉语言表征、跨模态对齐和轻量化知识迁移。</p>
+            <div class="knowledge-links">
+              <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E5%89%8D%E6%B2%BF%E6%A8%A1%E5%9E%8B/VLM.md&amp;title=%E8%A7%86%E8%A7%89%E8%AF%AD%E8%A8%80%E5%A4%A7%E6%A8%A1%E5%9E%8B">视觉语言大模型</a>
               <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E5%89%8D%E6%B2%BF%E6%A8%A1%E5%9E%8B/Clip.md&amp;title=CLIP">CLIP</a>
-              <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E5%89%8D%E6%B2%BF%E6%A8%A1%E5%9E%8B/VLM.md&amp;title=%E8%A7%86%E8%A7%89%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B">VLM</a>
               <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E5%89%8D%E6%B2%BF%E6%A8%A1%E5%9E%8B/%E6%A8%A1%E5%9E%8B%E8%92%B8%E9%A6%8F.md&amp;title=%E6%A8%A1%E5%9E%8B%E8%92%B8%E9%A6%8F">模型蒸馏</a>
-              <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E5%89%8D%E6%B2%BF%E6%A8%A1%E5%9E%8B/CTM.md&amp;title=CTM">CTM</a>
             </div>
-          </article>
-          <article id="engineering" class="topic-card">
-            <span class="topic-label blue">Engineering</span>
-            <h4>模型部署</h4>
-            <div class="chip-list">
-              <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/ONNX%20_ONNX%20Runtime.md&amp;title=ONNX%20Runtime">ONNX Runtime</a>
-              <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/Docker.md&amp;title=Docker%20%E9%83%A8%E7%BD%B2">Docker</a>
-            </div>
-          </article>
-          <article class="topic-card">
-            <span class="topic-label lavender">Training</span>
-            <h4>训练实践</h4>
-            <div class="chip-list">
-              <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/%E5%9F%BA%E4%BA%8E%E7%BB%8F%E5%85%B8%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B%E8%BF%9B%E8%A1%8C%E6%9E%84%E5%BB%BA%E8%AE%AD%E7%BB%83%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B.md&amp;title=%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB%E8%AE%AD%E7%BB%83">图像分类训练</a>
-              <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/%E5%9F%BA%E4%BA%8E%E7%BB%8F%E5%85%B8%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B%E8%BF%9B%E8%A1%8C%E6%9E%84%E5%BB%BA%E8%AE%AD%E7%BB%83%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E6%A8%A1%E5%9E%8B.md&amp;title=%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E8%AE%AD%E7%BB%83">图像分割训练</a>
-            </div>
-          </article>
-        </div>
-      </div>
-
-      <div class="note-group">
-        <div class="note-group-heading">
-          <span class="note-group-icon">LAB</span>
-          <div><h3>项目与竞赛实践</h3><p>用完整的小项目验证数据处理、建模、评估与复盘能力。</p></div>
-        </div>
-        <div class="note-links">
-          <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/Kaggle/%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB.md&amp;title=%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB"><span>手写数字识别</span><small>图像分类入门</small></a>
-          <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/Kaggle/%E6%B3%B0%E5%9D%A6%E5%B0%BC%E5%85%8B%E5%8F%B7.md&amp;title=%E6%B3%B0%E5%9D%A6%E5%B0%BC%E5%85%8B%E5%8F%B7"><span>泰坦尼克号</span><small>结构化数据建模</small></a>
-          <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/Kaggle/AlphaDent.md&amp;title=AlphaDent"><span>AlphaDent</span><small>视觉竞赛实践</small></a>
-          <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/Kaggle/Facial_Keypoints_Detection.md&amp;title=%E4%BA%BA%E8%84%B8%E5%85%B3%E9%94%AE%E7%82%B9%E6%A3%80%E6%B5%8B"><span>人脸关键点</span><small>坐标回归任务</small></a>
-          <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/Kaggle/%E6%99%BA%E8%83%BD%E5%88%B6%E9%80%A0%E7%94%9F%E4%BA%A7%E7%BA%BF%E9%A1%B9%E7%9B%AE.md&amp;title=%E6%99%BA%E8%83%BD%E5%88%B6%E9%80%A0%E7%94%9F%E4%BA%A7%E7%BA%BF%E9%A1%B9%E7%9B%AE"><span>智能制造</span><small>工业场景项目</small></a>
-          <a href="./note-viewer.html?file=assets/%E4%B8%8B%E6%B0%B4%E9%81%93%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/Kaggle/%E5%9B%BE%E5%83%8F%E5%8E%BB%E9%98%B4%E5%BD%B1.md&amp;title=%E5%9B%BE%E5%83%8F%E5%8E%BB%E9%98%B4%E5%BD%B1"><span>图像去阴影</span><small>低层视觉任务</small></a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section journey-section">
-      <div class="container journey-grid">
-        <div class="journey-copy">
-          <p class="section-eyebrow">Keep exploring</p>
-          <h2>Learning <span class="gradient-text">Journey_</span></h2>
-          <p>把每个阶段的输入变成可复用的知识，把每次实验的结果变成下一次出发的依据。</p>
-        </div>
-        <div class="timeline">
-          <article class="timeline-item">
-            <span class="timeline-dot"></span>
-            <div><small>基础积累</small><h3>算法与深度学习</h3><p>建立算法设计、模型结构和训练流程的系统认识。</p></div>
-          </article>
-          <article class="timeline-item">
-            <span class="timeline-dot"></span>
-            <div><small>场景实践</small><h3>检测、分割与工业视觉</h3><p>在具体任务中理解数据、模型与评价指标之间的关系。</p></div>
-          </article>
-          <article class="timeline-item">
-            <span class="timeline-dot"></span>
-            <div><small>当前探索</small><h3>视频质量与多模态先验</h3><p>关注时空质量建模，以及大模型知识如何为视觉任务提供有效先验。</p></div>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="contact-section container">
-      <div>
-        <p class="section-eyebrow">Let's connect</p>
-        <h2>LET'S BUILD / CONNECT</h2>
-        <p>欢迎通过 GitHub 查看更多代码、笔记与持续更新。</p>
+    <section id="hobbies" class="section container">
+      <div class="section-header">
+        <div><p class="eyebrow">03 / OFF THE CLOCK</p><h2>兴趣爱好<span>_</span></h2></div>
+        <p>代码之外，保持运动、阅读和感受世界。专注不只来自屏幕前，也来自生活的节奏。</p>
       </div>
-      <a class="btn btn-primary" href="https://github.com/hongwanzhi123" target="_blank" rel="noreferrer">访问 GitHub <span aria-hidden="true">↗</span></a>
+      <div class="hobby-grid">
+        <article class="hobby-card wide"><img src="./assets/site/hobbies/badminton.jpg" alt="羽毛球拍与羽毛球" loading="lazy"><div><span>SPORT / 01</span><h3>羽毛球</h3></div></article>
+        <article class="hobby-card"><img src="./assets/site/hobbies/table-tennis.jpg" alt="乒乓球桌与球拍" loading="lazy"><div><span>SPORT / 02</span><h3>乒乓球</h3></div></article>
+        <article class="hobby-card"><img src="./assets/site/hobbies/xiangqi.jpg" alt="中国象棋棋盘" loading="lazy"><div><span>STRATEGY / 03</span><h3>中国象棋</h3></div></article>
+        <article class="hobby-card"><img src="./assets/site/hobbies/reading.jpg" alt="阅读中的书籍" loading="lazy"><div><span>READ / 04</span><h3>看书</h3></div></article>
+        <article class="hobby-card"><img src="./assets/site/hobbies/music.jpg" alt="唱片与音乐播放器" loading="lazy"><div><span>SOUND / 05</span><h3>音乐</h3></div></article>
+        <article class="hobby-card wide"><img src="./assets/site/hobbies/cinema.jpg" alt="电影院中的投影光束" loading="lazy"><div><span>FRAME / 06</span><h3>电影</h3></div></article>
+      </div>
+      <p class="photo-credit">图片来源：<a href="https://unsplash.com/" target="_blank" rel="noreferrer">Unsplash</a>；中国象棋图片：<a href="https://commons.wikimedia.org/wiki/File:Chinese_Chess_Board.JPG" target="_blank" rel="noreferrer">CYWongX / Wikimedia Commons（CC BY-SA 3.0）</a></p>
+    </section>
+
+    <section id="resume" class="section section-dark">
+      <div class="container">
+        <div class="section-header">
+          <div><p class="eyebrow">04 / RESUME</p><h2>个人简历<span>_</span></h2></div>
+          <p>以计算机视觉与 AI 工程为核心，持续积累从算法理解、科研实验到模型部署的完整能力。</p>
+        </div>
+
+        <div class="resume-shell">
+          <div class="resume-main">
+            <p class="resume-label">PROFILE</p>
+            <h3>Hong Wanzhi</h3>
+            <p class="resume-title">Computer Vision &amp; AI Explorer</p>
+            <p class="resume-summary">关注视频质量评价、目标检测、多标签识别与视觉语言模型。重视可复现的实验过程、清晰的技术表达，以及从研究原型走向工程应用的每一个环节。</p>
+            <a class="btn btn-primary" href="https://github.com/hongwanzhi123" target="_blank" rel="noreferrer">访问 GitHub <span>↗</span></a>
+          </div>
+
+          <div class="resume-column">
+            <p class="resume-label">TECH STACK</p>
+            <div class="skill-stack">
+              <div><span>LANGUAGE</span><p>Python · C/C++ · Markdown</p></div>
+              <div><span>AI / VISION</span><p>PyTorch · OpenCV · CNN · Transformer</p></div>
+              <div><span>MODELS</span><p>YOLO · DETR · ViT · VLM</p></div>
+              <div><span>ENGINEERING</span><p>ONNX · Docker · Git</p></div>
+            </div>
+          </div>
+
+          <div class="resume-column">
+            <p class="resume-label">FOCUS MAP</p>
+            <ol class="focus-list">
+              <li><span>01</span><div><strong>算法基础</strong><small>建模、复杂度与问题求解</small></div></li>
+              <li><span>02</span><div><strong>视觉任务</strong><small>分类、检测、分割与质量评价</small></div></li>
+              <li><span>03</span><div><strong>科研探索</strong><small>论文理解、实验设计与复现</small></div></li>
+              <li><span>04</span><div><strong>工程落地</strong><small>推理、部署与性能优化</small></div></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact container">
+      <div><p class="eyebrow">READY FOR THE NEXT CHALLENGE</p><h2>保持好奇，持续构建。</h2></div>
+      <a class="btn btn-ghost" href="#home">返回顶部 ↑</a>
     </section>
   </main>
 
-  <footer class="footer">
-    <p>© 2026 HONG WANZHI // SYSTEM ONLINE</p>
-    <p>持续学习 · 记录实验 · 构建可靠的 AI 系统</p>
+  <footer class="footer container">
+    <p>© 2026 HONG WANZHI</p><p>SYSTEM STATUS: <span>ONLINE</span></p>
   </footer>
 </body>
 </html>
